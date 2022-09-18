@@ -3,6 +3,9 @@
 
 #include <mlx.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <stdio.h>
 
 #define SQUARE 500
 typedef struct s_data
