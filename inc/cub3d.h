@@ -3,8 +3,9 @@
 
 #include <mlx.h>
 #include <stdlib.h>
+#include <stdio.h>
 
-#define SQUARE 500
+#define SQUARE 800
 typedef struct s_data
 {
 	void *mlx;
@@ -14,5 +15,8 @@ typedef struct s_data
 } t_data;
 
 void fill_pixel(t_data *data, int x, int y, int color);
+void    draw_square(t_data *data, int x, int y, int color);
+void    draw_mini_square(t_data *data, int x, int y, int color);
+
 
 #endif
