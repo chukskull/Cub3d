@@ -2,7 +2,7 @@ CC= cc
 
 FLAGS= -Wall -Wextra -Werror
 
-FILES= cub3d draw_with_pixels/fill_buffer_by_pixels
+FILES= cub3d draw_with_pixels/fill_buffer_by_pixels draw_with_pixels/draw
 
 B_DIR=build
 
