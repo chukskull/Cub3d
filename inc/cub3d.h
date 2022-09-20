@@ -1,14 +1,20 @@
 #ifndef CUB3D_H
 #define CUB3D_H
 
-#include <mlx.h>
-#include <stdlib.h>
-#include <stdio.h>
+# include <mlx.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <math.h>
 
-#define SQUARE 800
-
+# define SQUARE 800
+# define PI 3.14159265
+# define DEGREE 0.0174533
+ 
 typedef struct s_player
 {
+	double	dx;
+	double	dy;
+	double	an;
 	double	x;
 	double	y;
 }	t_player;

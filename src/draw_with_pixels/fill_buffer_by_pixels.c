@@ -11,6 +11,7 @@ void    draw_player(t_data *data, int x, int y, int color)
     j = 0;
     (void)x;
     (void)y;
+    data->player->an = PI / 2 ;
     data->player->x = x;
     data->player->y = y;
     while(i < 10)
