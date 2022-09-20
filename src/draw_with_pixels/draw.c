@@ -46,6 +46,8 @@ void	draw_map_p(t_data *data, int init)
 			{1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,1},
 			{1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,1},
 			{1,0,1,1,1,1,1,1,1,0,0,0,0,1,0,0,0,1},
+			{1,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,1,1},
+			{1,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,1,1},
 			{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 		};
 	while(r < 18)
@@ -54,11 +56,23 @@ void	draw_map_p(t_data *data, int init)
 			while(c < 18)
 			{
 				if (map[r][c] == 1)
-					draw_square(data, c, r, 0x00ff0000);
-				else if (map[r][c] == 2 && init == 1)
-					draw_player(data, c, r , 0x00ffD100);
+					draw_square(data, c, r, 0xB3ff0000);
+				else if (map[r][c] == 0 || map[r][c] == 2)
+					draw_square(data, c, r, 0x00e5dad5);
+				c++;
+			}
+			r++;
+		}
+		r = 0;
+		while(r < 18)
+		{
+			c = 0;
+			while(c < 18)
+			{
+				if (map[r][c] == 2 && init ==1)
+					draw_player(data, c,r, 0x00ff0000);
 				else if (init == 0)
-					draw_p(data, 0x00ffD100);
+					draw_p(data, 0x00ff0000);
 				c++;
 			}
 			r++;

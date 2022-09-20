@@ -33,12 +33,12 @@ void    draw_square(t_data *data, int x, int y, int color)
 
     j = 0;
     i = 0;
-    while(i < SQUARE/ 17)
+    while(i < (SQUARE/ 18) - 1)
     {
         j = 0;
-        while(j  < SQUARE/ 17)
+        while(j  < (SQUARE/ 18) - 1)
         {
-            fill_pixel(data, (i + ((SQUARE/ 18) * x)), 3 +(j + ((SQUARE/ 18) *y)), color);
+            fill_pixel(data, (i + ((SQUARE/ 18))* x), (j + (((SQUARE/ 18)) *y)), color);
             j++;
         }
         i++;

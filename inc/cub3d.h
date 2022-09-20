@@ -23,10 +23,12 @@ typedef struct s_data
 
 
 void	fill_pixel(t_data *data, int x, int y, int color);
-void    draw_square(t_data *data, int x, int y, int color);
-void    draw_player(t_data *data, int x, int y, int color);
+void	draw_square(t_data *data, int x, int y, int color);
+void	draw_player(t_data *data, int x, int y, int color);
 int		render_for_p(t_data *data);
 void    draw_map_p(t_data *data, int init);
+int		key_hook(int key, t_data *data);
+
 
 
 
