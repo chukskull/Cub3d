@@ -55,8 +55,6 @@ void	draw_map_p(t_data *data, int init)
 			{
 				if (map[r][c] == 1)
 					draw_square(data, c, r, 0x00ff0000);
-				// else if (map[r][c] == 0)
-				// 	draw_square(data, c, r, 0x0000000);
 				else if (map[r][c] == 2 && init == 1)
 					draw_player(data, c, r , 0x00ffD100);
 				else if (init == 0)
