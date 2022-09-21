@@ -5,7 +5,7 @@ int	key_hook(int key, t_data *data)
 {
 	int	usls;
 
-	if (key == 13)
+	if (key == W)
 	{
 		mlx_clear_window(data->mlx, data->win);
 		data->img = mlx_new_image(data->mlx, SQUARE, SQUARE);
@@ -14,7 +14,7 @@ int	key_hook(int key, t_data *data)
 		data->player->x += cos(data->player->an) * 0.3;
 		draw_map_p(data, 0);
 	}
-	else if (key == 1)
+	else if (key == S)
 	{
 		mlx_clear_window(data->mlx, data->win);
 		data->img = mlx_new_image(data->mlx, SQUARE, SQUARE);
@@ -23,20 +23,22 @@ int	key_hook(int key, t_data *data)
 		data->player->x -= cos(data->player->an) * 0.3;
 		draw_map_p(data, 0);
 	}
-	else if (key == 0)
+	else if (key == A)
 	{
 		mlx_clear_window(data->mlx, data->win);
 		data->img = mlx_new_image(data->mlx, SQUARE, SQUARE);
 		data->addr = (unsigned int *)mlx_get_data_addr(data->img, &usls, &usls, &usls);
-		data->player->x -=0.3;
+		data->player->y -= sin(PI - (PI/2) - data->player->an)  * 0.3;
+		data->player->x -= cos(PI - (PI/2) - data->player->an)  * 0.3;
 		draw_map_p(data, 0);
 	}
-	else if (key == 2)
+	else if (key == D)
 	{
 		mlx_clear_window(data->mlx, data->win);
 		data->img = mlx_new_image(data->mlx, SQUARE, SQUARE);
 		data->addr = (unsigned int *)mlx_get_data_addr(data->img, &usls, &usls, &usls);
-		data->player->x +=0.3;
+		data->player->y += sin(PI - (PI/2) - data->player->an)  * 0.3;
+		data->player->x += cos(PI - (PI/2) - data->player->an)  * 0.3;
 		draw_map_p(data, 0);
 	}
 	else if (key == 124)

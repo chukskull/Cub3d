@@ -9,6 +9,10 @@
 # define SQUARE 800
 # define PI 3.14159265
 # define DEGREE 0.0174533
+# define A 0
+# define W 13
+# define S 1
+# define D 2
  
 typedef struct s_player
 {
@@ -34,6 +38,8 @@ void	draw_player(t_data *data, int x, int y, int color);
 int		render_for_p(t_data *data);
 void    draw_map_p(t_data *data, int init);
 int		key_hook(int key, t_data *data);
+void    draw_line(t_data *data, double Bx, double By, double Ex, double Ey);
+
 
 
 

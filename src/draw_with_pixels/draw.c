@@ -77,5 +77,6 @@ void	draw_map_p(t_data *data, int init)
 			}
 			r++;
 		}
+		draw_line(data, (SQUARE/18) * data->player->x, (SQUARE/18) * data->player->y, (SQUARE/18) * data->player->x + 70, (SQUARE/18) * data->player->y + 70);
 		mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 }
