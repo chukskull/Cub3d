@@ -8,10 +8,10 @@ void	draw_p(t_data *data, int color)
 
     i = 0;
     j = 0;
-    while(i < 10)
+    while(i < 3)
     {
         j = 0;
-        while(j < 10)
+        while(j < 3)
         {
             fill_pixel(data, j + ((SQUARE/18) * data->player->x), i +((SQUARE / 18) * data->player->y), color);
             j++;
@@ -77,6 +77,18 @@ void	draw_map_p(t_data *data, int init)
 			}
 			r++;
 		}
-		draw_line(data, (SQUARE/18) * data->player->x, (SQUARE/18) * data->player->y, (SQUARE/18) * data->player->x + 70, (SQUARE/18) * data->player->y + 70);
+		double an = data->player->an - (60/2 * DEGREE);
+		float x;
+		x = 0;
+		while (x < 60)
+		{
+			float ra = x * DEGREE;
+			draw_line(data, (SQUARE/18) * data->player->x + 1, 
+			(SQUARE/18) * data->player->y + 1,
+			((SQUARE/18) * data->player->x + 1+ cos(an + ra) * 500),
+			((SQUARE/18) * data->player->y + 1 - sin(an + ra) * 500));
+			x += 0.5;
+		}
+		//draw_rays(data);
 		mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 }

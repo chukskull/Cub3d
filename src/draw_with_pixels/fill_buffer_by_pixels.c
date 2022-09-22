@@ -55,13 +55,13 @@ void    draw_player(t_data *data, int x, int y, int color)
     j = 0;
     (void)x;
     (void)y;
-    data->player->an = PI / 2 ;
+    data->player->an = 3 * M_PI_2 ;
     data->player->x = x;
     data->player->y = y;
-    while(i < 10)
+    while(i < 3)
     {
         j = 0;
-        while(j < 10)
+        while(j < 3)
         {
             fill_pixel(data, j + ((SQUARE/18) * x), i +((SQUARE / 18) * y), color);
             j++;
