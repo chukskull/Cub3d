@@ -2,7 +2,7 @@ CC= cc
 
 FLAGS= -Wall -Wextra -Werror
 
-FILES= cub3d fill_buffer_by_pixels
+FILES= cub3d fill_buffer_by_pixels check_extension ft_error ft_strlen ft_strdup gnl get_cub_data check_cub_data ft_strncmp ft_strcmp
 
 B_DIR=build
 

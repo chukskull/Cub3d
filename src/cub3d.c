@@ -1,11 +1,34 @@
 #include "cub3d.h"
 
+void	init_color(t_color *color)
+{
+	color->r = -1;
+	color->g = -1;
+	color->b = -1;
+}
+
+void	init_map(t_map *map)
+{
+	map->map = NULL;
+	map->no_tex = NULL;
+	map->so_tex = NULL;
+	map->ea_tex = NULL;
+	map->we_tex = NULL;
+	map->file = NULL;
+	init_color(&map->floor_clr);
+	init_color(&map->ceilling_clr);
+	map->player.x = 0;
+	map->player.y = 0;
+}
+
 void initial(t_data *data)
 {
 	int i;
 	int usls;
 
 	i = 0;
+	data->file_cont = NULL;
+	init_map(&data->map);
 	data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, SQUARE, SQUARE, "cub3d");
 	data->img = mlx_new_image(data->mlx, SQUARE, SQUARE);
@@ -14,37 +37,15 @@ void initial(t_data *data)
 	mlx_loop(data->mlx);
 }
 
-void	check_extension(char **av)
-{
-	int i;
-	
-	i = 0;
-	while (av[1][i])
-		i++;
-	if (av[1][i - 1] != 'b' || av[1][i - 2] != 'u'
-		|| av[1][i - 3] != 'c' || av[1][i - 4] != '.')
-	{
-		printf("Error: Invalid file type, use .cub!\n");
-		exit(1);
-	}
-}
-
 int main(int ac, char **av)
 {
-	t_data *data;
-	int fd;
+	t_data data_p;
+
 	if (ac != 2)
-	{
-		write(2, "Error! Example: ./cub3d map.cub\n", 32);
-		exit(0);
-	}
-	fd = open(av[1], O_RDONLY);
-	if (fd < 0)
-	{
-		printf("Error: File not found!\n");
-		exit(0);
-	}
+		ft_error("Example: ./cub3d map.cub\n");
 	check_extension(av);
-	data = malloc(sizeof(t_data));
-	initial(data);
+	initial(&data_p);
+	data_p.map.file = ft_strdup(av[1]);
+	get_cub_data(&data_p);
+	check_cub_data(data_p.file_cont);
 }
