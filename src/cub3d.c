@@ -1,51 +1,40 @@
 #include "cub3d.h"
 
-void	init_color(t_color *color)
+void	ft_free(t_data *game, char *msg)
 {
-	color->r = -1;
-	color->g = -1;
-	color->b = -1;
-}
-
-void	init_map(t_map *map)
-{
-	map->map = NULL;
-	map->no_tex = NULL;
-	map->so_tex = NULL;
-	map->ea_tex = NULL;
-	map->we_tex = NULL;
-	map->file = NULL;
-	init_color(&map->floor_clr);
-	init_color(&map->ceilling_clr);
-	map->player.x = 0;
-	map->player.y = 0;
-}
-
-void initial(t_data *data)
-{
-	int i;
-	int usls;
+	int	i;
 
 	i = 0;
-	data->file_cont = NULL;
-	init_map(&data->map);
-	data->mlx = mlx_init();
-	data->win = mlx_new_window(data->mlx, SQUARE, SQUARE, "cub3d");
-	data->img = mlx_new_image(data->mlx, SQUARE, SQUARE);
-	data->addr = (unsigned int *)mlx_get_data_addr(data->img, &usls, &usls, &usls);
-	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-	mlx_loop(data->mlx);
+	while (game->map.map[i])
+		free(game->map.map[i++]);
+	free(game->map.map);
+	free(game->map.file_name);
+	mlx_destroy_window(game->mlx, game->win_ptr);
+	printf("%s\n", msg);
+	exit(EXIT_SUCCESS);
 }
 
-int main(int ac, char **av)
+int	ft_close(t_data *game)
 {
-	t_data data_p;
+	ft_free(game, "WINDOW CLOSED");
+	return (0);
+}
+
+void	ft_new_window(t_data *game)
+{
+	game->win_ptr = mlx_new_window(game->mlx, game->screen_w, game->screen_h, \
+		"cub3D");
+	mlx_hook(game->win_ptr, WIN_CLOSE, 0, ft_close, game);
+}
+
+int	main(int ac, char **av)
+{
+	t_data	data_p;
 
 	if (ac != 2)
-		ft_error("Example: ./cub3d map.cub\n");
-	check_extension(av);
-	initial(&data_p);
-	data_p.map.file = ft_strdup(av[1]);
-	get_cub_data(&data_p);
-	check_cub_data(data_p.file_cont);
+		ft_puterror("Usage: ./cub3D ./path_to_map\n");
+	init_game(&data_p);
+	data_p.map.file_name = ft_strdup(av[1]);
+	parse_map(&data_p);
+	return (0);
 }

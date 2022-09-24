@@ -1,11 +1,11 @@
 #include "cub3d.h"
 
-int	ft_strlen(char *s)
+int	ft_strlen(char *str)
 {
 	int	i;
 
 	i = 0;
-	while (s[i])
+	while (str[i])
 		i++;
 	return (i);
 }

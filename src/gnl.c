@@ -1,16 +1,17 @@
+
 #include "cub3d.h"
 
-char	*gnl(int fd)
+char	*get_next_line(int fd)
 {
-	char	line[10000000];
-	char	buff;
+	char	line[8000000];
+	char	buf;
 	int		i;
 
 	i = 0;
-	while (read(fd, &buff, 1) == 1)
+	while (read(fd, &buf, 1) == 1)
 	{
-		line[i++] = buff;
-		if (buff == '\n')
+		line[i++] = buf;
+		if (buf == '\n')
 			break ;
 	}
 	line[i] = '\0';
