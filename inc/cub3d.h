@@ -11,37 +11,14 @@
 # include <math.h>
 # include "mlx.h"
 
-# define EQUAL 0
-
-# define RIGHT_M 2
-# define LEFT_M 0
-# define DOWN_M 1
-# define UP_M 13
-# define RIGHT_R 124
-# define LEFT_R 123
-# define ESC_KEY 53
 # define WIN_CLOSE 17
-
-# define BUFF_SIZE 256
-# define WALL '1'
-# define EMPTY '0'
-# define COL 'C'
-# define EXIT 'E'
-# define PLAYER 'P'
-# define ENEMY 'X'
-# define SQUARE 32
-
+# define EQUAL 0
 # define FLOOR "F"
 # define CEILLING "C"
-
 # define NORTH_TEXTURE "NO"
 # define SOUTH_TEXTURE "SO"
 # define EAST_TEXTURE "EA"
 # define WEST_TEXTURE "WE"
-
-# define RED 0x00FF0000
-# define GREEN 0x0000FF00
-# define BLUE 0x000000FF
 
 typedef struct s_color
 {
@@ -151,17 +128,7 @@ void	free_split(char **tab);
 int	get_map_len(t_data *ptr);
 int	check_new_line(char *str);
 int	in_charset(char c, char *set);
-int	check_wall(char **map, int row, int col);
-int	check_extended_wall(char **map, int row);
 void	ft_new_window(t_data *game);
 int	ft_close(t_data *game);
-void	check_map_full(t_map map);
-void	check_map(char **map);
-void	get_map_textures(t_data *data);
-void	get_colors(t_data *ptr);
-void	get_map(t_data *ptr);
-void	get_player_pos(t_map *map);
-void	start_game(t_data *game);
-
 
 #endif
