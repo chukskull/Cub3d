@@ -47,6 +47,10 @@ int	key_hook(int key, t_data *data)
 		data->img = mlx_new_image(data->mlx, SQUARE, SQUARE);
 		data->addr = (unsigned int *)mlx_get_data_addr(data->img, &usls, &usls, &usls);
 		data->player->an -= DEGREE * 4;
+		//printf("degree before %lf \n",(data->player->an*180)/M_PI);
+		if (data->player->an < 0)
+			data->player->an += M_PI *2;
+		//printf("degree after  %lf \n",(data->player->an*180)/M_PI);
 		draw_map_p(data, 0);
 	}
 	else if (key == 123)
@@ -55,6 +59,8 @@ int	key_hook(int key, t_data *data)
 		data->img = mlx_new_image(data->mlx, SQUARE, SQUARE);
 		data->addr = (unsigned int *)mlx_get_data_addr(data->img, &usls, &usls, &usls);
 		data->player->an += DEGREE * 4;
+		if (data->player->an > M_PI * 2)
+			data->player->an -= M_PI *2;
 		draw_map_p(data, 0);
 	}
 	return(0);

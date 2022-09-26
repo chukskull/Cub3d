@@ -33,7 +33,7 @@ void	draw_map_p(t_data *data, int init)
 		{
 			{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 			{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-			{1,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,1},
+			{1,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,1},
 			{1,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,1},
 			{1,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,1},
 			{1,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,1},
@@ -77,18 +77,27 @@ void	draw_map_p(t_data *data, int init)
 			}
 			r++;
 		}
-		double an = data->player->an - (60/2 * DEGREE);
-		float x;
-		x = 0;
-		while (x < 60)
-		{
-			float ra = x * DEGREE;
-			draw_line(data, (SQUARE/18) * data->player->x + 1, 
-			(SQUARE/18) * data->player->y + 1,
-			((SQUARE/18) * data->player->x + 1+ cos(an + ra) * 500),
-			((SQUARE/18) * data->player->y + 1 - sin(an + ra) * 500));
-			x += 0.5;
-		}
+		//(data->player->y+ ((sin(data->player->an) / fabs(sin(data->player->an)))*delta->dy))  *(SQUARE/18)
+		// double an = data->player->an - (60/2 * DEGREE);
+		// float x;
+		// x = 0;
+		// while (x < 60)
+		// {
+		// 	float ra = x * DEGREE;
+			t_player	*delta;
+			delta = find_wall(map, data);
+			
+			draw_line(data, (SQUARE/18) * data->player->x, 
+				(SQUARE/18) * data->player->y,
+				  delta->dx * (SQUARE/18),
+				  delta->dy * (SQUARE/18));
+			// draw_line(data, (SQUARE/18) * data->player->x, 
+
+			// 	(SQUARE/18) * data->player->y,
+			// 	 (delta->dx + data->player->x) * (SQUARE/18),
+			// 		((sin(data->player->an)*(delta->dy)) + data->player->y)  * (SQUARE/18));
+		// 	x += 0.5;
+		// }
 		//draw_rays(data);
 		mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 }
