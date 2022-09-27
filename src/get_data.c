@@ -1,7 +1,7 @@
 
 #include "cub3d.h"
 
-void	get_map_textures(t_data *data)
+void	get_textures(t_data *data)
 {
 	char	**splited;
 	int		i;
@@ -26,7 +26,7 @@ void	get_map_textures(t_data *data)
 		|| open(data->map.south_texture, O_RDONLY) < 0
 		|| open(data->map.east_texture, O_RDONLY) < 0
 		|| open(data->map.west_texture, O_RDONLY) < 0)
-		ft_puterror("Texture doesn't exist!\n");
+		ft_error("Texture doesn't exist!\n");
 }
 
 void	get_rgb(t_color *color, char **str)
@@ -36,60 +36,60 @@ void	get_rgb(t_color *color, char **str)
 	color->b = ft_atoi(str[2]);
 }
 
-void	get_colors(t_data *ptr)
+void	get_colors(t_data *p)
 {
 	char	**splited;
 	int		i;
 
 	i = 0;
-	while (ptr->file_content[i])
+	while (p->file_content[i])
 	{
-		if (ptr->file_content[i][0] == '1'
-				|| ptr->file_content[i][0] == ' '
-				|| ptr->file_content[i][0] == '0')
+		if (p->file_content[i][0] == '1'
+				|| p->file_content[i][0] == ' '
+				|| p->file_content[i][0] == '0')
 			break ;
-		splited = ft_split(ptr->file_content[i++], ", \n");
+		splited = ft_split(p->file_content[i++], ", \n");
 		if (splited[0])
 		{
 			if (ft_strcmp(splited[0], FLOOR) == EQUAL)
-				get_rgb(&ptr->map.floor_color, splited + 1);
+				get_rgb(&p->map.floor_color, splited + 1);
 			else if (ft_strcmp(splited[0], CEILLING) == EQUAL)
-				get_rgb(&ptr->map.ceilling_color, splited + 1);
+				get_rgb(&p->map.ceilling_color, splited + 1);
 		}
 		free_split(splited);
 	}
 }
 
-void	get_map(t_data *ptr)
+void	get_map(t_data *p)
 {
 	int		i;
 	int		j;
 
 	i = 0;
 	j = 0;
-	ptr->map.row = get_map_len(ptr);
-	ptr->map.map = malloc(sizeof(char *) * (ptr->map.row + 1));
-	ptr->map.col = 0;
-	if (!ptr->map.map)
-		ft_puterror("Malloc Error: parser.c: 201\n");
-	while (ptr->file_content[i])
+	p->map.row = get_map_len(p);
+	p->map.map = malloc(sizeof(char *) * (p->map.row + 1));
+	p->map.col = 0;
+	if (!p->map.map)
+		ft_error("Mallocing Error\n");
+	while (p->file_content[i])
 	{
-		if (ptr->file_content[i][0] == '1'
-				|| ptr->file_content[i][0] == ' '
-				|| ptr->file_content[i][0] == '0')
+		if (p->file_content[i][0] == '1'
+				|| p->file_content[i][0] == ' '
+				|| p->file_content[i][0] == '0')
 		{
-			ptr->map.map[j++] = ft_strndup(ptr->file_content[i],
-					ft_strlen(ptr->file_content[i]) - \
-					check_new_line(ptr->file_content[i]));
-			if (ptr->map.col < ft_strlen(ptr->map.map[j - 1]))
-				ptr->map.col = ft_strlen(ptr->map.map[j - 1]);
+			p->map.map[j++] = ft_strndup(p->file_content[i],
+					ft_strlen(p->file_content[i]) - \
+					check_new_line(p->file_content[i]));
+			if (p->map.col < ft_strlen(p->map.map[j - 1]))
+				p->map.col = ft_strlen(p->map.map[j - 1]);
 		}
 		i++;
 	}
-	ptr->map.map[j] = 0;
+	p->map.map[j] = 0;
 }
 
-void	get_player_pos(t_map *map)
+void	get_p_pos(t_map *map)
 {
 	int	row;
 	int	col;
@@ -100,11 +100,11 @@ void	get_player_pos(t_map *map)
 		col = 0;
 		while (map->map[row][col])
 		{
-			if (in_charset(map->map[row][col], "NSEW"))
+			if (char_inset(map->map[row][col], "NWSE"))
 			{
 				map->player.x = row;
 				map->player.y = col;
-				map->starting_pos = map->map[row][col];
+				map->start_position = map->map[row][col];
 				return ;
 			}
 			col++;

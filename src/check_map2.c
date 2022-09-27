@@ -16,7 +16,7 @@ int	check_extention(char *src, char *to_find)
 	return (EXIT_FAILURE);
 }
 
-void	check_cub_texture(char **content, int *i)
+void	check_texture(char **content, int *i)
 {
 	int	found;
 
@@ -31,12 +31,12 @@ void	check_cub_texture(char **content, int *i)
 		(*i)++;
 	}
 	if (found != 4 && *i != found)
-		ft_puterror("Texture error!\n");
+		ft_error("Texture error!\n");
 	if (*i == 0)
-		ft_puterror("Empty .cub file!\n");
+		ft_error("Empty file!\n");
 }
 
-void	check_cub_colors(char **content, int *i)
+void	check_colors(char **content, int *i)
 {
 	int	found;
 	int	j;
@@ -53,20 +53,20 @@ void	check_cub_colors(char **content, int *i)
 		(*i)++;
 	}
 	if (*i - ex != found && found != 2)
-		ft_puterror("Colors error\n");
+		ft_error("Colors error!\n");
 }
 
-void	check_cub_content(char **content)
+void	check_map_content(char **content)
 {
 	int	i;
 
 	i = 0;
-	check_cub_texture(content, &i);
+	check_texture(content, &i);
 	while (content[i] && ft_strcmp(content[i], "\n") == 0)
 		i++;
-	check_cub_colors(content, &i);
+	check_colors(content, &i);
 	while (content[i] && ft_strcmp(content[i], "\n") == 0)
 		i++;
 	if (!content[i])
-		ft_puterror("Map doesn't exist!\n");
+		ft_error("No map was found!\n");
 }

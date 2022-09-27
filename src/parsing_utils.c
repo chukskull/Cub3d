@@ -1,26 +1,25 @@
 
-
 #include "cub3d.h"
 
-int	nbr_of_lines(char *filename)
+int	lines_nbr(char *file_name)
 {
 	int		i;
 	int		fd;
 	char	*line;
 
 	i = 0;
-	fd = open(filename, O_RDONLY);
+	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
 	{
 		strerror(errno);
 		exit(EXIT_FAILURE);
 	}
-	line = get_next_line(fd);
+	line = gnl(fd);
 	while (line)
 	{
 		free(line);
 		i++;
-		line = get_next_line(fd);
+		line = gnl(fd);
 	}
 	close(fd);
 	return (i);
@@ -41,7 +40,7 @@ int	check_new_line(char *str)
 	return (str[ft_strlen(str) - 1] == '\n');
 }
 
-int	in_charset(char c, char *set)
+int	char_inset(char c, char *set)
 {
 	int	i;
 
@@ -55,18 +54,18 @@ int	in_charset(char c, char *set)
 	return (0);
 }
 
-int	get_map_len(t_data *ptr)
+int	get_map_len(t_data *p)
 {
 	int		i;
 	int		len;
 
 	i = 0;
 	len = 0;
-	while (ptr->file_content[i])
+	while (p->file_content[i])
 	{
-		if (ptr->file_content[i][0] == '1'
-				|| ptr->file_content[i][0] == ' '
-				|| ptr->file_content[i][0] == '0')
+		if (p->file_content[i][0] == '1'
+				|| p->file_content[i][0] == ' '
+				|| p->file_content[i][0] == '0')
 		{
 			len++;
 		}

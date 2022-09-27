@@ -1,22 +1,22 @@
 
 #include "cub3d.h"
 
-char	*ft_strdup(char *s1)
+char	*ft_strdup(char *s)
 {
-	char	*copy;
-	size_t	s1_len;
+	char	*dup;
+	size_t	len;
 	int		i;
 
 	i = 0;
-	s1_len = ft_strlen(s1);
-	copy = malloc(sizeof(char) * (s1_len + 1));
-	if (!copy)
+	len = ft_strlen(s);
+	dup = malloc(sizeof(char) * (len + 1));
+	if (!dup)
 		return (NULL);
-	while (s1[i])
+	while (s[i])
 	{
-		copy[i] = s1[i];
+		dup[i] = s[i];
 		i++;
 	}
-	copy[i] = '\0';
-	return (copy);
+	dup[i] = '\0';
+	return (dup);
 }
