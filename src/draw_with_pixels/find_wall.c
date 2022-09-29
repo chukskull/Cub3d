@@ -31,67 +31,17 @@ t_player	*find_wall(int map[18][18], t_data *data)
 	t_player	*ver;
 	double	distanc_hor;
 	double	distanc_ver;
-	// int	x;
-	// int y;
-	// x = data->player->x;
-	// y = data->player->y;
 
-	// while((i + y < 18 && i - y > 0 ) || (i + x < 18 && i - x) > 0)
-	// {
-		horiz = find_wall_horiz(map, data);
-		ver = find_wall_vert(map, data);
-		puts("op");
-		distanc_hor = sqrt(pow(data->player->x - horiz->dx  , 2)
-			+ pow(data->player->y - horiz->dy, 2));
-		distanc_ver = sqrt(pow(data->player->x - ver->dx, 2) 
-		+ pow(data->player->y - ver->dy, 2));
-		if (distanc_hor < distanc_ver  || ver->flag == 1)
-		{
-			puts("horiz");
-			printf("%d\n", ver->flag);
-			return(horiz);
-		}
-		else
-		{
-			puts("ver");
-			return(ver);
-		}
-	
-
-	// printf("%f\n", diff_y);
-	// if(data->player->an == PI/2)
-	// 	return(horiz);
-	// printf("cos: %f\n", cos(data->player->an));
-	// printf("distanc_hor: %f\n", data->player->x);
-	// printf("distanc_ver: %f\n", distanc_ver);
-	// if (cos(data->player->an) >= 0)
-	// {
-	// 	if (distanc_hor < distanc_ver)
-	// 	{
-	// 		return(ver);
-	// 	}
-	// 	else
-	// 	{
-	// 		return(horiz);
-	// 	}
-	// }
-	// else
-	// {
-	// 	if (distanc_hor > distanc_ver)
-	// 	{
-	// 		return(ver);
-	// 	}
-	// 	else
-	// 	{
-	// 		return(horiz);
-	// 	}
-	// }
-	// printf("x: %f\ny: %f\n", ver->dx, ver->dy);
-	// if (distanc_hor < distanc_ver)
-	// {
-	// 	return(horiz);
-	// }
-	// return(ver);
+	horiz = find_wall_horiz(map, data);
+	ver = find_wall_vert(map, data);
+	distanc_hor = sqrt(pow(data->player->x - horiz->dx  , 2)
+		+ pow(data->player->y - horiz->dy, 2));
+	distanc_ver = sqrt(pow(data->player->x - ver->dx, 2) 
+	+ pow(data->player->y - ver->dy, 2));
+	if (distanc_hor < distanc_ver  || ver->flag == 1)
+		return(horiz);
+	else
+		return(ver);
 	return(NULL);
 }
 
@@ -136,15 +86,11 @@ t_player	*find_wall_vert(int map[18][18], t_data *data)
 	t_player	*ver;
 	int	count;
 	int	count2;
-	//int	f;
-
-	// int		p;
 	(void)map;
+
 	ver = malloc(sizeof(t_player));
 	y = data->player->y;
 	x = data->player->x;
-	//f = y;
-	//float f1 = (y+1);
 	ver->flag = 0;
 	int	dx = x;
 	int dy = y;
@@ -154,8 +100,6 @@ t_player	*find_wall_vert(int map[18][18], t_data *data)
 	{
 		if (cos(data->player->an) > 0)
 		{
-			puts("looking right");
-			puts("----------");
 			ver->dx = -(data->player->x - (x + count++));
 		}
 		else if (cos(data->player->an) < 0)
