@@ -21,7 +21,7 @@ void initial(t_data *data)
 	data->addr = (unsigned int *)mlx_get_data_addr(data->img, &usls, &usls, &usls);
 	draw_map_p(data, 1);
 	//mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-	mlx_key_hook(data->win, key_hook, data);
+	mlx_hook(data->win, 02, 1L<<0, key_hook, data);
 	mlx_loop(data->mlx);
 }
 
