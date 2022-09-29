@@ -31,20 +31,39 @@ t_player	*find_wall(int map[18][18], t_data *data)
 	t_player	*ver;
 	double	distanc_hor;
 	double	distanc_ver;
+	// int	x;
+	// int y;
+	// x = data->player->x;
+	// y = data->player->y;
 
-	horiz = find_wall_horiz(map, data);
-	ver = find_wall_vert(map, data);
+	// while((i + y < 18 && i - y > 0 ) || (i + x < 18 && i - x) > 0)
+	// {
+		horiz = find_wall_horiz(map, data);
+		ver = find_wall_vert(map, data);
+		puts("op");
+		distanc_hor = sqrt(pow(data->player->x - horiz->dx  , 2)
+			+ pow(data->player->y - horiz->dy, 2));
+		distanc_ver = sqrt(pow(data->player->x - ver->dx, 2) 
+		+ pow(data->player->y - ver->dy, 2));
+		if (distanc_hor < distanc_ver  || ver->flag == 1)
+		{
+			puts("horiz");
+			printf("%d\n", ver->flag);
+			return(horiz);
+		}
+		else
+		{
+			puts("ver");
+			return(ver);
+		}
+	
 
-	distanc_hor = sqrt(pow(data->player->x - horiz->dx, 2)
-		+ pow(data->player->y - horiz->dy, 2));
-	distanc_ver = sqrt(pow(data->player->x - ver->dx, 2) 
-		+ pow(data->player->y - ver->dy,2));
 	// printf("%f\n", diff_y);
 	// if(data->player->an == PI/2)
 	// 	return(horiz);
 	// printf("cos: %f\n", cos(data->player->an));
-	printf("distanc_hor: %f\n", data->player->x);
-	printf("distanc_ver: %f\n", distanc_ver);
+	// printf("distanc_hor: %f\n", data->player->x);
+	// printf("distanc_ver: %f\n", distanc_ver);
 	// if (cos(data->player->an) >= 0)
 	// {
 	// 	if (distanc_hor < distanc_ver)
@@ -68,38 +87,45 @@ t_player	*find_wall(int map[18][18], t_data *data)
 	// 	}
 	// }
 	// printf("x: %f\ny: %f\n", ver->dx, ver->dy);
-	if (distanc_hor < distanc_ver)
-	{
-		return(horiz);
-	}
-	return(ver);
+	// if (distanc_hor < distanc_ver)
+	// {
+	// 	return(horiz);
+	// }
+	// return(ver);
+	return(NULL);
 }
 
 t_player	*find_wall_horiz(int map[18][18], t_data *data)
 {
-	int	x;
-	int y;
+	int			x;
+	int			y;
 	t_player	*horiz;
-	//int	f;
+	int			count;
+	int			count2;
 
-	// int		p;
 	(void)map;
 	horiz = malloc(sizeof(t_player));
 	y = data->player->y;
 	x = data->player->x;
-	//f = y;
-	//float f1 = (y+1);
-	if (sin(data->player->an) > 0)
+	float f1 = (y + 1);
+	int	dy = data->player->y;
+	int	dx = data->player->x;
+	count = 0;
+	count2 = 0;
+	while(1)
 	{
-		horiz->dy = -(data->player->y - y);
+		if (sin(data->player->an) > 0)
+			horiz->dy = -(data->player->y - (y - count++));
+		else
+			horiz->dy = -(data->player->y - (f1 + count2++));
+		horiz->dx = -(horiz->dy / (tan(data->player->an)));
+		horiz->dx += data->player->x;
+		dx = horiz->dx;
+		horiz->dy += data->player->y;
+		dy = horiz->dy;
+		if (map[dy - 1][dx] == 1 || map[dy][dx] == 1)
+			break ;
 	}
-	else
-	{
-		horiz->dy = -(data->player->y - (y +1));
-	}
-	horiz->dx = -(horiz->dy / (tan(data->player->an)));
-	horiz->dx += data->player->x;
-	horiz->dy += data->player->y;
 	return(horiz);
 }
 
@@ -108,6 +134,8 @@ t_player	*find_wall_vert(int map[18][18], t_data *data)
 	int	x;
 	int y;
 	t_player	*ver;
+	int	count;
+	int	count2;
 	//int	f;
 
 	// int		p;
@@ -117,24 +145,38 @@ t_player	*find_wall_vert(int map[18][18], t_data *data)
 	x = data->player->x;
 	//f = y;
 	//float f1 = (y+1);
-	if (cos(data->player->an) > 0)
+	ver->flag = 0;
+	int	dx = x;
+	int dy = y;
+	count = 1;
+	count2 = 0;
+	while(1)
 	{
-		ver->dx = -(data->player->x - (x + 1));
+		if (cos(data->player->an) > 0)
+		{
+			puts("looking right");
+			puts("----------");
+			ver->dx = -(data->player->x - (x + count++));
+		}
+		else if (cos(data->player->an) < 0)
+		{
+			ver->dx = -(data->player->x - (x - count2++));
+		}
+		ver->dy = -(ver->dx * (tan(data->player->an)));
+		ver->dx += data->player->x;
+		ver->dy += data->player->y;
+		if ((ver->dy < 0 || ver->dy > 18) )
+		{
+			ver->flag = 1;
+			break ;
+		}
+		else
+			ver->flag = 0;
+		dx = ver->dx;
+		dy = ver->dy;
+		if (map[dy][dx] == 1 || map[dy][dx - 1] == 1)
+			break ;
 	}
-	else if (cos(data->player->an) < 0)
-	{
-		ver->dx = -(data->player->x - x);
-	}
-	ver->dy = -(ver->dx * (tan(data->player->an)));
-
-	// printf("----------------------\n");
-	// printf("dx : %lf\n",data->player->dx);
-	// printf("----------------------\n");
-
-	// printf("dy : %lf\n",data->player->dy);
-	// printf("----------------------\n");
-	ver->dx += data->player->x;
-	ver->dy += data->player->y;
 	return(ver);
 }
 

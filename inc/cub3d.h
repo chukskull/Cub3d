@@ -21,6 +21,7 @@ typedef struct s_player
 	double	an;
 	double	x;
 	double	y;
+	int		flag;
 }	t_player;
 typedef struct s_data
 {
