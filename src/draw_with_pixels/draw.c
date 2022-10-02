@@ -77,15 +77,22 @@ void	draw_map_p(t_data *data, int init)
 			}
 			r++;
 		}
-		//(data->player->y+ ((sin(data->player->an) / fabs(sin(data->player->an)))*delta->dy))  *(SQUARE/18)
-		// double an = data->player->an - (60/2 * DEGREE);
-		// float x;
-		// x = 0;
-		// while (x < 60)
-		// {
-		// 	float ra = x * DEGREE;
+		double an = data->player->an - (60/2 * DEGREE);
+		if (an < 0 )
+			an += 2 * M_PI;
+		float x;
+		double	check;
+		x = 0;
+		while (x < 60)
+		{
+			float ra = x * DEGREE ;
 			t_player	*delta;
-			delta = find_wall(map, data);
+			// printf("%f cinamn \n", (an + ra));
+			check = an + ra;
+			if (check > 2 * M_PI)
+				check -= 2 * M_PI;
+			
+			delta = find_wall(map, data, check);
 			
 			draw_line(data, (SQUARE/18) * data->player->x, 
 				(SQUARE/18) * data->player->y,
@@ -96,8 +103,8 @@ void	draw_map_p(t_data *data, int init)
 			// 	(SQUARE/18) * data->player->y,
 			// 	 (delta->dx + data->player->x) * (SQUARE/18),
 			// 		((sin(data->player->an)*(delta->dy)) + data->player->y)  * (SQUARE/18));
-		// 	x += 0.5;
-		// }
+			x += 0.05;
+		}
 		//draw_rays(data);
 		mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 }

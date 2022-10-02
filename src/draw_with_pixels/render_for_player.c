@@ -14,8 +14,8 @@ void	ft_up_down_key(int key, t_data *data, int usls)
 	mlx_clear_window(data->mlx, data->win);
 	data->img = mlx_new_image(data->mlx, SQUARE, SQUARE);
 	data->addr = (unsigned int *)mlx_get_data_addr(data->img, &usls, &usls, &usls);
-	data->player->y -= sin(data->player->an) * 0.3 * sign;
-	data->player->x += cos(data->player->an) * 0.3 * sign;
+	data->player->y -= sin(data->player->an) * 0.2 * sign;
+	data->player->x += cos(data->player->an) * 0.2 * sign;
 	draw_map_p(data, 0);
 }
 
@@ -31,8 +31,8 @@ void	ft_left_right_key(int key, t_data *data, int usls)
 	mlx_clear_window(data->mlx, data->win);
 	data->img = mlx_new_image(data->mlx, SQUARE, SQUARE);
 	data->addr = (unsigned int *)mlx_get_data_addr(data->img, &usls, &usls, &usls);
-	data->player->y -= sin(PI - (PI/2) - data->player->an)  * 0.3 * sign;
-	data->player->x -= cos(PI - (PI/2) - data->player->an)  * 0.3 * sign;
+	data->player->y -= sin(PI - (PI/2) - data->player->an)  * 0.2 * sign;
+	data->player->x -= cos(PI - (PI/2) - data->player->an)  * 0.2 * sign;
 	draw_map_p(data, 0);
 }
 
@@ -49,7 +49,7 @@ int	key_hook(int key, t_data *data)
 		mlx_clear_window(data->mlx, data->win);
 		data->img = mlx_new_image(data->mlx, SQUARE, SQUARE);
 		data->addr = (unsigned int *)mlx_get_data_addr(data->img, &usls, &usls, &usls);
-		data->player->an -= DEGREE * 4;
+		data->player->an -= DEGREE * 2;
 		if (data->player->an < 0)
 			data->player->an += M_PI *2;
 		draw_map_p(data, 0);
@@ -59,7 +59,7 @@ int	key_hook(int key, t_data *data)
 		mlx_clear_window(data->mlx, data->win);
 		data->img = mlx_new_image(data->mlx, SQUARE, SQUARE);
 		data->addr = (unsigned int *)mlx_get_data_addr(data->img, &usls, &usls, &usls);
-		data->player->an += DEGREE * 4;
+		data->player->an += DEGREE * 2;
 		if (data->player->an > M_PI * 2)
 			data->player->an -= M_PI *2;
 		draw_map_p(data, 0);

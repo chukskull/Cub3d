@@ -25,15 +25,15 @@
 // 	return(y);
 // }
 
-t_player	*find_wall(int map[18][18], t_data *data)
+t_player	*find_wall(int map[18][18], t_data *data, double ray_angle)
 {
 	t_player	*horiz;
 	t_player	*ver;
 	double	distanc_hor;
 	double	distanc_ver;
-
-	horiz = find_wall_horiz(map, data);
-	ver = find_wall_vert(map, data);
+	(void)ray_angle;
+	horiz = find_wall_horiz(map, data, ray_angle);
+	ver = find_wall_vert(map, data, ray_angle);
 	distanc_hor = sqrt(pow(data->player->x - horiz->dx  , 2)
 		+ pow(data->player->y - horiz->dy, 2));
 	distanc_ver = sqrt(pow(data->player->x - ver->dx, 2) 
@@ -45,7 +45,7 @@ t_player	*find_wall(int map[18][18], t_data *data)
 	return(NULL);
 }
 
-t_player	*find_wall_horiz(int map[18][18], t_data *data)
+t_player	*find_wall_horiz(int map[18][18], t_data *data, double ray_an)
 {
 	int			x;
 	int			y;
@@ -60,26 +60,30 @@ t_player	*find_wall_horiz(int map[18][18], t_data *data)
 	float f1 = (y + 1);
 	int	dy = data->player->y;
 	int	dx = data->player->x;
+	double	snagat;
 	count = 0;
 	count2 = 0;
 	while(1)
 	{
-		if (sin(data->player->an) > 0)
+		snagat = (tan(ray_an));
+		if (sin(ray_an) > 0)
 			horiz->dy = -(data->player->y - (y - count++));
 		else
 			horiz->dy = -(data->player->y - (f1 + count2++));
-		horiz->dx = -(horiz->dy / (tan(data->player->an)));
+		horiz->dx = -(horiz->dy / snagat);
 		horiz->dx += data->player->x;
 		dx = horiz->dx;
 		horiz->dy += data->player->y;
 		dy = horiz->dy;
-		if (map[dy - 1][dx] == 1 || map[dy][dx] == 1)
+		if (dx > 18 || dx < 0 || dy > 18 || dy < 0)
+			break ;
+		if ( (map[dy - 1][dx] == 1 || map[dy][dx] == 1))
 			break ;
 	}
 	return(horiz);
 }
 
-t_player	*find_wall_vert(int map[18][18], t_data *data)
+t_player	*find_wall_vert(int map[18][18], t_data *data, double ray_an)
 {
 	int	x;
 	int y;
@@ -98,15 +102,15 @@ t_player	*find_wall_vert(int map[18][18], t_data *data)
 	count2 = 0;
 	while(1)
 	{
-		if (cos(data->player->an) > 0)
+		if (cos(ray_an) > 0)
 		{
 			ver->dx = -(data->player->x - (x + count++));
 		}
-		else if (cos(data->player->an) < 0)
+		else if (cos(ray_an) < 0)
 		{
 			ver->dx = -(data->player->x - (x - count2++));
 		}
-		ver->dy = -(ver->dx * (tan(data->player->an)));
+		ver->dy = -(ver->dx * (tan(ray_an)));
 		ver->dx += data->player->x;
 		ver->dy += data->player->y;
 		if ((ver->dy < 0 || ver->dy > 18) )
@@ -125,7 +129,7 @@ t_player	*find_wall_vert(int map[18][18], t_data *data)
 }
 
 
-	//if (data->player->an > PI /2 && data->player->an <= 3*(PI/2))
+	//if (ray_an > PI /2 && data->player->an <= 3*(PI/2))
 		//data->player->dy = data->player->y / (SQUARE/18) * (SQUARE/18);
 
 // double	find_wall_ver_y(int map[18][18], t_data *data)
