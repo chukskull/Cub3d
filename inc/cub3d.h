@@ -14,6 +14,7 @@
 # define W 13
 # define S 1
 # define D 2
+# define SIZE (800/18) / 5
  
 typedef struct s_player
 {

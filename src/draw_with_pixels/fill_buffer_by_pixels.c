@@ -63,7 +63,7 @@ void    draw_player(t_data *data, int x, int y, int color)
         j = 0;
         while(j < 3)
         {
-            fill_pixel(data, j + ((SQUARE/18) * x), i +((SQUARE / 18) * y), color);
+            fill_pixel(data, j + ((SIZE) * x), i +((SIZE) * y), color);
             j++;
         }
         i++;
@@ -78,12 +78,12 @@ void    draw_square(t_data *data, int x, int y, int color)
 
     j = 0;
     i = 0;
-    while(i < (SQUARE/ 18) - 1)
+    while(i < (SIZE))
     {
         j = 0;
-        while(j  < (SQUARE/ 18) - 1)
+        while(j < (SIZE))
         {
-            fill_pixel(data, (i + ((SQUARE/ 18))* x), (j + (((SQUARE/ 18)) *y)), color);
+            fill_pixel(data, (i + ((SIZE))* x), (j + (((SIZE)) *y)), color);
             j++;
         }
         i++;
