@@ -33,7 +33,7 @@ static char	*ft_strrev(char *str)
 	return (str);
 }
 
-static void	check_negative(int *n, unsigned int *nbr, size_t *nl)
+static void	is_negative(int *n, unsigned int *nbr, size_t *nl)
 {
 	if (*n <= 0)
 	{
@@ -52,7 +52,7 @@ char	*ft_itoa(int n)
 	i = 0;
 	nl = 0;
 	nbr = n;
-	check_negative(&n, &nbr, &nl);
+	is_negative(&n, &nbr, &nl);
 	nl += num_len(n);
 	num = malloc(sizeof(char) * (nl + 1));
 	if (!num)
