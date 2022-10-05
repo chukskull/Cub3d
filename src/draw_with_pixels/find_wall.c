@@ -25,36 +25,33 @@
 // 	return(y);
 // }
 
-t_player	*find_wall(int map[18][18], t_data *data, double ray_angle)
+t_player	find_wall(int map[18][18], t_data *data, double ray_angle)
 {
-	t_player	*horiz;
-	t_player	*ver;
+	t_player	horiz;
+	t_player	ver;
 	double	distanc_hor;
 	double	distanc_ver;
 	(void)ray_angle;
 	horiz = find_wall_horiz(map, data, ray_angle);
 	ver = find_wall_vert(map, data, ray_angle);
-	distanc_hor = sqrt(pow(data->player->x - horiz->dx  , 2)
-		+ pow(data->player->y - horiz->dy, 2));
-	distanc_ver = sqrt(pow(data->player->x - ver->dx, 2) 
-	+ pow(data->player->y - ver->dy, 2));
-	if (distanc_hor < distanc_ver  || ver->flag == 1)
+	distanc_hor = sqrt(pow(data->player->x - horiz.dx  , 2)
+		+ pow(data->player->y - horiz.dy, 2));
+	distanc_ver = sqrt(pow(data->player->x - ver.dx, 2) 
+	+ pow(data->player->y - ver.dy, 2));
+	if (distanc_hor < distanc_ver  || ver.flag == 1)
 		return(horiz);
 	else
 		return(ver);
-	return(NULL);
 }
 
-t_player	*find_wall_horiz(int map[18][18], t_data *data, double ray_an)
+t_player	find_wall_horiz(int map[18][18], t_data *data, double ray_an)
 {
 	int			x;
 	int			y;
-	t_player	*horiz;
+	t_player	horiz;
 	int			count;
 	int			count2;
 
-	(void)map;
-	horiz = malloc(sizeof(t_player));
 	y = data->player->y;
 	x = data->player->x;
 	float f1 = (y + 1);
@@ -67,14 +64,14 @@ t_player	*find_wall_horiz(int map[18][18], t_data *data, double ray_an)
 	{
 		snagat = (tan(ray_an));
 		if (sin(ray_an) > 0)
-			horiz->dy = -(data->player->y - (y - count++));
+			horiz.dy = -(data->player->y - (y - count++));
 		else
-			horiz->dy = -(data->player->y - (f1 + count2++));
-		horiz->dx = -(horiz->dy / snagat);
-		horiz->dx += data->player->x;
-		dx = horiz->dx;
-		horiz->dy += data->player->y;
-		dy = horiz->dy;
+			horiz.dy = -(data->player->y - (f1 + count2++));
+		horiz.dx = -(horiz.dy / snagat);
+		horiz.dx += data->player->x;
+		dx = horiz.dx;
+		horiz.dy += data->player->y;
+		dy = horiz.dy;
 		if (dx > 18 || dx < 0 || dy > 18 || dy < 0)
 			break ;
 		if ( (map[dy - 1][dx] == 1 || map[dy][dx] == 1))
@@ -83,19 +80,16 @@ t_player	*find_wall_horiz(int map[18][18], t_data *data, double ray_an)
 	return(horiz);
 }
 
-t_player	*find_wall_vert(int map[18][18], t_data *data, double ray_an)
+t_player	find_wall_vert(int map[18][18], t_data *data, double ray_an)
 {
 	int	x;
 	int y;
-	t_player	*ver;
+	t_player	ver;
 	int	count;
 	int	count2;
-	(void)map;
-
-	ver = malloc(sizeof(t_player));
 	y = data->player->y;
 	x = data->player->x;
-	ver->flag = 0;
+	ver.flag = 0;
 	int	dx = x;
 	int dy = y;
 	count = 1;
@@ -104,24 +98,24 @@ t_player	*find_wall_vert(int map[18][18], t_data *data, double ray_an)
 	{
 		if (cos(ray_an) > 0)
 		{
-			ver->dx = -(data->player->x - (x + count++));
+			ver.dx = -(data->player->x - (x + count++));
 		}
 		else if (cos(ray_an) < 0)
 		{
-			ver->dx = -(data->player->x - (x - count2++));
+			ver.dx = -(data->player->x - (x - count2++));
 		}
-		ver->dy = -(ver->dx * (tan(ray_an)));
-		ver->dx += data->player->x;
-		ver->dy += data->player->y;
-		if ((ver->dy < 0 || ver->dy > 18) )
+		ver.dy = -(ver.dx * (tan(ray_an)));
+		ver.dx += data->player->x;
+		ver.dy += data->player->y;
+		if ((ver.dy < 0 || ver.dy > 18) )
 		{
-			ver->flag = 1;
+			ver.flag = 1;
 			break ;
 		}
 		else
-			ver->flag = 0;
-		dx = ver->dx;
-		dy = ver->dy;
+			ver.flag = 0;
+		dx = ver.dx;
+		dy = ver.dy;
 		if (map[dy][dx] == 1 || map[dy][dx - 1] == 1)
 			break ;
 	}

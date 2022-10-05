@@ -17,7 +17,7 @@ void initial(t_data *data)
 	
 	data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, SQUARE, SQUARE, "cub3d");
-	data->img = mlx_new_image(data->mlx, SQUARE, SQUARE);
+	data->img = mlx_new_image(data->mlx, SQUARE_M, SQUARE_M);
 	data->addr = (unsigned int *)mlx_get_data_addr(data->img, &usls, &usls, &usls);
 	draw_map_p(data, 1);
 	//mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);

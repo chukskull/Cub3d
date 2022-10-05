@@ -39,7 +39,7 @@ void draw_line(t_data *data, double xB, double yB, double xA, double yA)
 
     while (step >= 0)
     {
-       fill_pixel_2(data ,round(x),round(y),0xff3300);
+       fill_pixel_2(data ,round(x),round(y), 0xff3300);
         x += xinc;
         y += yinc;
         step--;

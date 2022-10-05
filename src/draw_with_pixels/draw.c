@@ -20,7 +20,7 @@ void	draw_p(t_data *data, int color)
     }
 }
 
-void	draw_walls(t_data *wall,t_player *delta,t_data *data, double x, double an)
+void	draw_walls(t_data *wall,t_player delta,t_data *data, double x, double an)
 {
 	double	d_to_p;
 	double	distance;
@@ -33,7 +33,7 @@ void	draw_walls(t_data *wall,t_player *delta,t_data *data, double x, double an)
 	int j;
 	j = 0;
 	x_w = (SQUARE)/ 60;
-	distance = sqrt(pow(data->player->x - delta->dx, 2) + pow(data->player->y - delta->dy, 2));
+	distance = sqrt(pow(data->player->x - delta.dx, 2) + pow(data->player->y - delta.dy, 2));
 	correct_distance = distance * cos(fabs(data->player->an - an));
 	d_to_p = (SQUARE / 2) / tan(60 / 2);
 	wall_strip_h = fabs((SIZE) / correct_distance * d_to_p);
@@ -41,10 +41,18 @@ void	draw_walls(t_data *wall,t_player *delta,t_data *data, double x, double an)
 		wall_strip_h = 800;
 	top_y = (SQUARE / 2) - (wall_strip_h / 2);
 	bottom_y = top_y + wall_strip_h;
-	while (top_y < bottom_y)
+	int y = 0;
+	while(y < (SQUARE))
 	{
-		fill_pixel(wall, (x) *(x_w)  , top_y,0xffff00);
-		top_y++;
+		if (y >= 0 && y < top_y)
+		{
+				fill_pixel(wall, (x) *(x_w)  , y ,0x0051afa4);
+		}
+		else if (y >= top_y && y <= bottom_y)
+			fill_pixel(wall, (x) *(x_w)  , y,0x008151af);
+		else if (y >= bottom_y && y <= SQUARE)
+			fill_pixel(wall, (x) * (x_w), y, 0xbff79d);
+		y++;
 	}
 }
 
@@ -52,19 +60,18 @@ void	draw_map_p(t_data *data, int init)
 {
 	int	r;
 	int	c;
-	t_data	*wall;
+	t_data	wall;
 	int usls;
 
 	r = 0;
 	c = 0;
-	wall = malloc(sizeof(t_data));
 	int map[18][18] =
 		{
 			{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 			{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-			{1,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+			{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
 			{1,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,1},
-			{1,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,1},
+			{1,0,0,1,0,0,0,2,0,0,0,0,0,1,0,0,0,1},
 			{1,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,1},
 			{1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1},
 			{1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,1},
@@ -85,13 +92,14 @@ void	draw_map_p(t_data *data, int init)
 			while(c < 18)
 			{
 				if (map[r][c] == 1)
-					draw_square(data, c, r, 0xB3ff0000);
+					draw_square(data, c, r, 0x0074af51);
 				else if (map[r][c] == 0 || map[r][c] == 2)
 					draw_square(data, c, r, 0x00e5dad5);
 				c++;
 			}
 			r++;
 		}
+
 		r = 0;
 		while(r < 18)
 		{
@@ -112,13 +120,13 @@ void	draw_map_p(t_data *data, int init)
 		float x;
 		float diff = 60.0 / 800;
 		double	check;
-		wall->img = mlx_new_image(data->mlx, SQUARE, SQUARE);
-		wall->addr = (unsigned int *)mlx_get_data_addr(wall->img, &usls, &usls, &usls);
+		wall.img = mlx_new_image(data->mlx, SQUARE, SQUARE);
+		wall.addr = (unsigned int *)mlx_get_data_addr(wall.img, &usls, &usls, &usls);
 		x = 0;
 		while (x < 60)
 		{
 			float ra = x * DEGREE ;
-			t_player	*delta;
+			t_player	delta;
 			check = an + ra;
 			if (check > 2 * M_PI)
 				check -= 2 * M_PI;
@@ -126,12 +134,14 @@ void	draw_map_p(t_data *data, int init)
 			
 			draw_line(data, (SIZE) * data->player->x, 
 				(SIZE) * data->player->y,
-				  delta->dx * (SIZE),
-				  delta->dy * (SIZE));
-			draw_walls(wall , delta, data, x, check);
+				  delta.dx * (SIZE),
+				  delta.dy * (SIZE));
+			draw_walls(&wall , delta, data, x, check);
 			x += diff;
 		}
 		//draw_rays(data)
-		mlx_put_image_to_window(data->mlx, data->win, wall->img, 0, 0);
+		mlx_put_image_to_window(data->mlx, data->win, wall.img, 0, 0);
 		mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+		mlx_destroy_image(data->mlx, wall.img);
+		mlx_destroy_image(data->mlx, data->img);
 }

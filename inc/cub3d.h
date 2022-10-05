@@ -43,9 +43,9 @@ int			render_for_p(t_data *data);
 void   		draw_map_p(t_data *data, int init);
 int			key_hook(int key, t_data *data);
 void   		draw_line(t_data *data, double Bx, double By, double Ex, double Ey);
-t_player	*find_wall_horiz(int map[18][18], t_data *data,  double ray_angle);
-t_player	*find_wall_vert(int map[18][18], t_data *data,  double ray_angle);
-t_player	*find_wall(int map[18][18], t_data *data, double ray_angle);
+t_player	find_wall_horiz(int map[18][18], t_data *data,  double ray_angle);
+t_player	find_wall_vert(int map[18][18], t_data *data,  double ray_angle);
+t_player	find_wall(int map[18][18], t_data *data, double ray_angle);
 void    fill_pixel_2(t_data *data, int x, int y, int color);
 
 
