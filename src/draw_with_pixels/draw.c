@@ -13,14 +13,14 @@ void	draw_p(t_data *data, int color)
         j = 0;
         while(j < 1)
         {
-            fill_pixel(data, j + ((SIZE) * data->player->x), i +((SIZE) * data->player->y), color);
+            fill_pixel_2(data, j + ((SIZE) * data->player->x), i +((SIZE) * data->player->y), color);
             j++;
         }
         i++;
     }
 }
 
-void	draw_walls(t_player *delta,t_data *data, double x, double an)
+void	draw_walls(t_data *wall,t_player *delta,t_data *data, double x, double an)
 {
 	double	d_to_p;
 	double	distance;
@@ -43,7 +43,7 @@ void	draw_walls(t_player *delta,t_data *data, double x, double an)
 	bottom_y = top_y + wall_strip_h;
 	while (top_y < bottom_y)
 	{
-		fill_pixel(data, ((x * (x_w))) , top_y,0xffff00);
+		fill_pixel(wall, (x) *(x_w)  , top_y,0xffff00);
 		top_y++;
 	}
 }
@@ -52,10 +52,12 @@ void	draw_map_p(t_data *data, int init)
 {
 	int	r;
 	int	c;
+	t_data	*wall;
+	int usls;
 
 	r = 0;
 	c = 0;
-
+	wall = malloc(sizeof(t_data));
 	int map[18][18] =
 		{
 			{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -109,31 +111,27 @@ void	draw_map_p(t_data *data, int init)
 			an += 2 * M_PI;
 		float x;
 		float diff = 60.0 / 800;
-		printf("%f\n", diff);
 		double	check;
+		wall->img = mlx_new_image(data->mlx, SQUARE, SQUARE);
+		wall->addr = (unsigned int *)mlx_get_data_addr(wall->img, &usls, &usls, &usls);
 		x = 0;
 		while (x < 60)
 		{
 			float ra = x * DEGREE ;
 			t_player	*delta;
-			// printf("%f cinamn \n", (an + ra));
 			check = an + ra;
 			if (check > 2 * M_PI)
 				check -= 2 * M_PI;
-			
 			delta = find_wall(map, data, check);
 			
 			draw_line(data, (SIZE) * data->player->x, 
 				(SIZE) * data->player->y,
 				  delta->dx * (SIZE),
 				  delta->dy * (SIZE));
-			// draw_line(data, (SQUARE/18) * data->player->x, 
-			draw_walls(delta, data, x, check);
-			// 	(SQUARE/18) * data->player->y,
-			// 	 (delta->dx + data->player->x) * (SQUARE/18),
-			// 		((sin(data->player->an)*(delta->dy)) + data->player->y)  * (SQUARE/18));
+			draw_walls(wall , delta, data, x, check);
 			x += diff;
 		}
-		//draw_rays(data);
+		//draw_rays(data)
+		mlx_put_image_to_window(data->mlx, data->win, wall->img, 0, 0);
 		mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 }

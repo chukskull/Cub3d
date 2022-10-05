@@ -39,7 +39,7 @@ void draw_line(t_data *data, double xB, double yB, double xA, double yA)
 
     while (step >= 0)
     {
-       fill_pixel(data ,round(x),round(y),0xff3300);
+       fill_pixel_2(data ,round(x),round(y),0xff3300);
         x += xinc;
         y += yinc;
         step--;
@@ -63,7 +63,7 @@ void    draw_player(t_data *data, int x, int y, int color)
         j = 0;
         while(j < 3)
         {
-            fill_pixel(data, j + ((SIZE) * x), i +((SIZE) * y), color);
+            fill_pixel_2(data, j + ((SIZE) * x), i +((SIZE) * y), color);
             j++;
         }
         i++;
@@ -83,7 +83,7 @@ void    draw_square(t_data *data, int x, int y, int color)
         j = 0;
         while(j < (SIZE))
         {
-            fill_pixel(data, (i + ((SIZE))* x), (j + (((SIZE)) *y)), color);
+            fill_pixel_2(data, (i + ((SIZE))* x), (j + (((SIZE)) *y)), color);
             j++;
         }
         i++;
@@ -91,6 +91,13 @@ void    draw_square(t_data *data, int x, int y, int color)
 
 }
 
+void    fill_pixel_2(t_data *data, int x, int y, int color)
+{
+    unsigned int *pi;
+
+    pi = data->addr + (y * SQUARE_M) + x;
+    *pi = color;
+}
 void fill_pixel(t_data *data, int x, int y, int color)
 {
     unsigned int *pi;

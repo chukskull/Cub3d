@@ -14,7 +14,8 @@
 # define W 13
 # define S 1
 # define D 2
-# define SIZE (800/18) / 5
+# define SIZE (200/ 18)
+# define SQUARE_M 200
  
 typedef struct s_player
 {
@@ -45,6 +46,7 @@ void   		draw_line(t_data *data, double Bx, double By, double Ex, double Ey);
 t_player	*find_wall_horiz(int map[18][18], t_data *data,  double ray_angle);
 t_player	*find_wall_vert(int map[18][18], t_data *data,  double ray_angle);
 t_player	*find_wall(int map[18][18], t_data *data, double ray_angle);
+void    fill_pixel_2(t_data *data, int x, int y, int color);
 
 
 //// utils
