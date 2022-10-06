@@ -32,26 +32,26 @@ void	draw_walls(t_data *wall,t_player delta,t_data *data, double x, double an)
 	int	bottom_y;
 	int j;
 	j = 0;
-	x_w = (SQUARE)/ 60;
+	x_w = (WIDTH)/ 60.0;
 	distance = sqrt(pow(data->player->x - delta.dx, 2) + pow(data->player->y - delta.dy, 2));
 	correct_distance = distance * cos(fabs(data->player->an - an));
-	d_to_p = (SQUARE / 2) / tan(60 / 2);
-	wall_strip_h = fabs((SIZE) / correct_distance * d_to_p);
-	if (wall_strip_h > 800)
-		wall_strip_h = 800;
-	top_y = (SQUARE / 2) - (wall_strip_h / 2);
+	d_to_p = (WIDTH / 2) / tan(60 / 2);
+	wall_strip_h = fabs((10) / correct_distance * d_to_p);
+	if (wall_strip_h > HEIGHT)
+		wall_strip_h = HEIGHT;
+	top_y = (HEIGHT / 2) - (wall_strip_h / 2);
 	bottom_y = top_y + wall_strip_h;
 	int y = 0;
-	while(y < (SQUARE))
+	while(y < (HEIGHT))
 	{
-		if (y >= 0 && y < top_y)
+		if (y < top_y)
 		{
-				fill_pixel(wall, (x) *(x_w)  , y ,0x0051afa4);
+			fill_pixel(wall, (x) * x_w, y ,0x0051afa4);
 		}
 		else if (y >= top_y && y <= bottom_y)
-			fill_pixel(wall, (x) *(x_w)  , y,0x008151af);
-		else if (y >= bottom_y && y <= SQUARE)
-			fill_pixel(wall, (x) * (x_w), y, 0xbff79d);
+			fill_pixel(wall, (x) * x_w , y,0x008151af);
+		else if (y > bottom_y && y < HEIGHT)
+			fill_pixel(wall, (x) * x_w, y, 0xbff79d);
 		y++;
 	}
 }
@@ -118,9 +118,9 @@ void	draw_map_p(t_data *data, int init)
 		if (an < 0 )
 			an += 2 * M_PI;
 		float x;
-		float diff = 60.0 / 800;
+		float diff = 59.0 / WIDTH;
 		double	check;
-		wall.img = mlx_new_image(data->mlx, SQUARE, SQUARE);
+		wall.img = mlx_new_image(data->mlx, WIDTH , HEIGHT);
 		wall.addr = (unsigned int *)mlx_get_data_addr(wall.img, &usls, &usls, &usls);
 		x = 0;
 		while (x < 60)
@@ -141,7 +141,7 @@ void	draw_map_p(t_data *data, int init)
 		}
 		//draw_rays(data)
 		mlx_put_image_to_window(data->mlx, data->win, wall.img, 0, 0);
-		mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+		// mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 		mlx_destroy_image(data->mlx, wall.img);
 		mlx_destroy_image(data->mlx, data->img);
 }

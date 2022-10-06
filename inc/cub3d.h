@@ -7,7 +7,8 @@
 # include <stdio.h>
 # include <math.h>
 
-# define SQUARE 800
+# define HEIGHT 700
+# define WIDTH 1200
 # define PI 3.14159265
 # define DEGREE 0.0174533
 # define A 0
