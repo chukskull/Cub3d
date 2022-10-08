@@ -22,7 +22,6 @@ void	draw_p(t_data *data, int color)
 
 void	draw_walls(t_data *wall,t_player delta,t_data *data, double x, double an)
 {
-	double	d_to_p;
 	double	distance;
 	double	correct_distance;
 	double	wall_strip_h;
@@ -34,12 +33,11 @@ void	draw_walls(t_data *wall,t_player delta,t_data *data, double x, double an)
 	j = 0;
 	x_w = (WIDTH)/ 60.0;
 	distance = sqrt(pow(data->player->x - delta.dx, 2) + pow(data->player->y - delta.dy, 2));
-	correct_distance = distance * cos(fabs(data->player->an - an));
-	d_to_p = (WIDTH / 2) / tan(60 / 2);
-	wall_strip_h = fabs((10) / correct_distance * d_to_p);
+	correct_distance =( distance * 64) * fabs(cos((data->player->an - an)));
+	wall_strip_h = HEIGHT / (correct_distance / 64);
 	if (wall_strip_h > HEIGHT)
 		wall_strip_h = HEIGHT;
-	top_y = (HEIGHT / 2) - (wall_strip_h / 2);
+	top_y = (HEIGHT - wall_strip_h) / 2;
 	bottom_y = top_y + wall_strip_h;
 	int y = 0;
 	while(y < (HEIGHT))
@@ -49,7 +47,9 @@ void	draw_walls(t_data *wall,t_player delta,t_data *data, double x, double an)
 			fill_pixel(wall, (x) * x_w, y ,0x0051afa4);
 		}
 		else if (y >= top_y && y <= bottom_y)
-			fill_pixel(wall, (x) * x_w , y,0x008151af);
+		{
+			ft_texture(wall, (x) * x_w, y, data, delta,  (y - top_y) * (64 / wall_strip_h));
+		}
 		else if (y > bottom_y && y < HEIGHT)
 			fill_pixel(wall, (x) * x_w, y, 0xbff79d);
 		y++;
@@ -141,7 +141,7 @@ void	draw_map_p(t_data *data, int init)
 		}
 		//draw_rays(data)
 		mlx_put_image_to_window(data->mlx, data->win, wall.img, 0, 0);
-		// mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+		mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 		mlx_destroy_image(data->mlx, wall.img);
 		mlx_destroy_image(data->mlx, data->img);
 }

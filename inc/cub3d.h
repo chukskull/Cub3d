@@ -31,9 +31,11 @@ typedef struct s_data
 {
 	void		*mlx;
 	void		*img;
+	void		*img2;
 	void		*win;
 	t_player	*player;	
 	unsigned int *addr;
+	unsigned int *addr2;
 } t_data;
 
 
@@ -48,6 +50,9 @@ t_player	find_wall_horiz(int map[18][18], t_data *data,  double ray_angle);
 t_player	find_wall_vert(int map[18][18], t_data *data,  double ray_angle);
 t_player	find_wall(int map[18][18], t_data *data, double ray_angle);
 void    fill_pixel_2(t_data *data, int x, int y, int color);
+int	test_pixel(t_data *data, int x, int y);
+void    ft_texture(t_data *wall, int x, int y, t_data *data, t_player delta, int wallh);
+
 
 
 //// utils
