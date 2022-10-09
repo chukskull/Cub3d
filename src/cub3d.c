@@ -12,19 +12,17 @@ double	scale(double val, double max, double range, double range2)
 
 void initial(t_data *data)
 {
-	int usls;
 	int i;
 
 	i = 0;
 
-	usls = 0;
 	data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "cub3d");
 	data->img = mlx_new_image(data->mlx, SQUARE_M, SQUARE_M);
-	data->addr = (unsigned int *)mlx_get_data_addr(data->img, &usls, &usls, &usls);
+	data->addr = (unsigned int *)mlx_get_data_addr(data->img, &data->usls, &data->usls, &data->usls);
 	// mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-	data->img2 = mlx_xpm_file_to_image(data->mlx, "/Users/snagat/Desktop/42-cube3d/src/images/New-Project.xpm", &usls, &usls);
-	data->addr2 =  (unsigned int *)mlx_get_data_addr(data->img2, &usls, &usls, &usls);
+	data->img2 = mlx_xpm_file_to_image(data->mlx, "/Users/snagat/Desktop/42-cube3d/src/images/zlijfassi.xpm", &data->pop, &data->pop2);
+	data->addr2 =  (unsigned int *)mlx_get_data_addr(data->img2, &data->usls, &data->usls, &data->usls);
 	 draw_map_p(data, 1);
 	// while(i  < 64)
 	// {

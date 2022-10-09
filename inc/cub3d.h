@@ -30,6 +30,7 @@ typedef struct s_player
 }	t_player;
 typedef struct s_data
 {
+	int			usls;
 	void		*mlx;
 	void		*img;
 	void		*img2;
@@ -37,7 +38,8 @@ typedef struct s_data
 	t_player	*player;	
 	unsigned int *addr;
 	unsigned int *addr2;
-	int			usls;
+	int			pop;
+	int			pop2;
 } t_data;
 
 typedef struct s_ray
@@ -71,6 +73,7 @@ int			test_pixel(t_data *data, int x, int y);
 void		ft_texture(t_data *wall, int x, int y, t_data *data, t_player delta, int wallh);
 void		draw_everything(t_data *data, int map[18][18], t_data *wall);
 void		draw_walls(t_data *wall,t_player delta,t_data *data, t_ray *ray);
+double		scale(double val, double max, double range, double range2);
 
 
 

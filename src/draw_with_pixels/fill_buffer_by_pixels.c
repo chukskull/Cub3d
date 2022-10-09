@@ -111,7 +111,7 @@ int	test_pixel(t_data *data, int x, int y)
 {
 	unsigned int	*pi;
 
-	pi = data->addr2 + (y * 100) + x;
+	pi = data->addr2 + (y * data->pop) + x;
 	return (*pi);
 }
 
