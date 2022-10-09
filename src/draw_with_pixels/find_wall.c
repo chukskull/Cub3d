@@ -39,7 +39,10 @@ t_player	find_wall(int map[18][18], t_data *data, double ray_angle)
 	distanc_ver = sqrt(pow(data->player->x - ver.dx, 2) 
 	+ pow(data->player->y - ver.dy, 2));
 	if (distanc_hor < distanc_ver  || ver.flag == 1)
+	{
+		horiz.zone = 1;
 		return(horiz);
+	}
 	else
 		return(ver);
 }

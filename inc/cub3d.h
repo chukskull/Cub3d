@@ -20,6 +20,7 @@
  
 typedef struct s_player
 {
+	int		zone;
 	double	dx;
 	double	dy;
 	double	an;
@@ -36,7 +37,23 @@ typedef struct s_data
 	t_player	*player;	
 	unsigned int *addr;
 	unsigned int *addr2;
+	int			usls;
 } t_data;
+
+typedef struct s_ray
+{
+	double	an;
+	double	x;
+	int		y;
+} t_ray;
+
+typedef	struct s_wall
+{
+	double	wall_h;
+	int		top_y;
+	int		bottom_y;
+} t_wall;
+
 
 
 void		fill_pixel(t_data *data, int x, int y, int color);
@@ -49,9 +66,11 @@ void   		draw_line(t_data *data, double Bx, double By, double Ex, double Ey);
 t_player	find_wall_horiz(int map[18][18], t_data *data,  double ray_angle);
 t_player	find_wall_vert(int map[18][18], t_data *data,  double ray_angle);
 t_player	find_wall(int map[18][18], t_data *data, double ray_angle);
-void    fill_pixel_2(t_data *data, int x, int y, int color);
-int	test_pixel(t_data *data, int x, int y);
-void    ft_texture(t_data *wall, int x, int y, t_data *data, t_player delta, int wallh);
+void    	fill_pixel_2(t_data *data, int x, int y, int color);
+int			test_pixel(t_data *data, int x, int y);
+void		ft_texture(t_data *wall, int x, int y, t_data *data, t_player delta, int wallh);
+void		draw_everything(t_data *data, int map[18][18], t_data *wall);
+void		draw_walls(t_data *wall,t_player delta,t_data *data, t_ray *ray);
 
 
 

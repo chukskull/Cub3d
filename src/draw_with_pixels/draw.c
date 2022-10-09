@@ -20,48 +20,11 @@ void	draw_p(t_data *data, int color)
     }
 }
 
-void	draw_walls(t_data *wall,t_player delta,t_data *data, double x, double an)
-{
-	double	distance;
-	double	correct_distance;
-	double	wall_strip_h;
-	int top_y;
-	double x_w;
-
-	int	bottom_y;
-	int j;
-	j = 0;
-	x_w = (WIDTH)/ 60.0;
-	distance = sqrt(pow(data->player->x - delta.dx, 2) + pow(data->player->y - delta.dy, 2));
-	correct_distance =( distance * 64) * fabs(cos((data->player->an - an)));
-	wall_strip_h = HEIGHT / (correct_distance / 64);
-	if (wall_strip_h > HEIGHT)
-		wall_strip_h = HEIGHT;
-	top_y = (HEIGHT - wall_strip_h) / 2;
-	bottom_y = top_y + wall_strip_h;
-	int y = 0;
-	while(y < (HEIGHT))
-	{
-		if (y < top_y)
-		{
-			fill_pixel(wall, (x) * x_w, y ,0x0051afa4);
-		}
-		else if (y >= top_y && y <= bottom_y)
-		{
-			ft_texture(wall, (x) * x_w, y, data, delta,  (y - top_y) * (64 / wall_strip_h));
-		}
-		else if (y > bottom_y && y < HEIGHT)
-			fill_pixel(wall, (x) * x_w, y, 0xbff79d);
-		y++;
-	}
-}
-
 void	draw_map_p(t_data *data, int init)
 {
 	int	r;
 	int	c;
 	t_data	wall;
-	int usls;
 
 	r = 0;
 	c = 0;
@@ -114,32 +77,7 @@ void	draw_map_p(t_data *data, int init)
 			}
 			r++;
 		}
-		double an = data->player->an - (60/2 * DEGREE);
-		if (an < 0 )
-			an += 2 * M_PI;
-		float x;
-		float diff = 59.0 / WIDTH;
-		double	check;
-		wall.img = mlx_new_image(data->mlx, WIDTH , HEIGHT);
-		wall.addr = (unsigned int *)mlx_get_data_addr(wall.img, &usls, &usls, &usls);
-		x = 0;
-		while (x < 60)
-		{
-			float ra = x * DEGREE ;
-			t_player	delta;
-			check = an + ra;
-			if (check > 2 * M_PI)
-				check -= 2 * M_PI;
-			delta = find_wall(map, data, check);
-			
-			draw_line(data, (SIZE) * data->player->x, 
-				(SIZE) * data->player->y,
-				  delta.dx * (SIZE),
-				  delta.dy * (SIZE));
-			draw_walls(&wall , delta, data, x, check);
-			x += diff;
-		}
-		//draw_rays(data)
+		draw_everything(data, map, &wall);
 		mlx_put_image_to_window(data->mlx, data->win, wall.img, 0, 0);
 		mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 		mlx_destroy_image(data->mlx, wall.img);

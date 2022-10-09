@@ -23,7 +23,7 @@ void initial(t_data *data)
 	data->img = mlx_new_image(data->mlx, SQUARE_M, SQUARE_M);
 	data->addr = (unsigned int *)mlx_get_data_addr(data->img, &usls, &usls, &usls);
 	// mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-	data->img2 = mlx_xpm_file_to_image(data->mlx, "/Users/snagat/Desktop/42-cube3d/src/images/satanichh-1.xpm", &usls, &usls);
+	data->img2 = mlx_xpm_file_to_image(data->mlx, "/Users/snagat/Desktop/42-cube3d/src/images/New-Project.xpm", &usls, &usls);
 	data->addr2 =  (unsigned int *)mlx_get_data_addr(data->img2, &usls, &usls, &usls);
 	 draw_map_p(data, 1);
 	// while(i  < 64)
