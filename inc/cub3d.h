@@ -6,6 +6,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <math.h>
+# include "libft.h"
+# include "parse.h"
 
 # define HEIGHT 700
 # define WIDTH 1200
@@ -95,12 +97,5 @@ double  g_player_y(t_data *data);
 double  g_player_x(t_data *data);
 double  g_player_dx(t_data *data);
 double  g_player_dy(t_data *data);
-
-
-
-
-
-
-
 
 #endif

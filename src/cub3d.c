@@ -48,11 +48,16 @@ void initial(t_data *data)
 
 int main(int ac, char **av)
 {
+	t_data	*data;
+	t_state	*state;
+
 	(void)ac;
 	(void)av;
-	t_data *data;
-
+	state = ft_parse(ac, av);
+	if (!state)
+		ft_exit_error("Error", 1);
 	data = malloc(sizeof(t_data));
 	data->player = malloc(sizeof(t_player));
 	initial(data);
+	return (0);
 }
