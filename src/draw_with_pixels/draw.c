@@ -8,34 +8,33 @@ void	draw_p(t_data *data, int color)
 
     i = 0;
     j = 0;
-    while(i < 10)
+    while(i < 1)
     {
         j = 0;
-        while(j < 10)
+        while(j < 1)
         {
-            fill_pixel(data, j + ((SQUARE/18) * data->player->x), i +((SQUARE / 18) * data->player->y), color);
+            fill_pixel_2(data, j + ((SIZE) * data->player->x), i +((SIZE) * data->player->y), color);
             j++;
         }
         i++;
     }
 }
 
-
 void	draw_map_p(t_data *data, int init)
 {
 	int	r;
 	int	c;
+	t_data	wall;
 
 	r = 0;
 	c = 0;
-
 	int map[18][18] =
 		{
 			{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 			{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-			{1,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,1},
+			{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
 			{1,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,1},
-			{1,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,1},
+			{1,0,0,1,0,0,0,2,0,0,0,0,0,1,0,0,0,1},
 			{1,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,1},
 			{1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1},
 			{1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,1},
@@ -56,13 +55,14 @@ void	draw_map_p(t_data *data, int init)
 			while(c < 18)
 			{
 				if (map[r][c] == 1)
-					draw_square(data, c, r, 0xB3ff0000);
+					draw_square(data, c, r, 0x0074af51);
 				else if (map[r][c] == 0 || map[r][c] == 2)
 					draw_square(data, c, r, 0x00e5dad5);
 				c++;
 			}
 			r++;
 		}
+
 		r = 0;
 		while(r < 18)
 		{
@@ -77,6 +77,9 @@ void	draw_map_p(t_data *data, int init)
 			}
 			r++;
 		}
-		draw_line(data, (SQUARE/18) * data->player->x, (SQUARE/18) * data->player->y, (SQUARE/18) * data->player->x + 70, (SQUARE/18) * data->player->y + 70);
+		draw_everything(data, map, &wall);
+		mlx_put_image_to_window(data->mlx, data->win, wall.img, 0, 0);
 		mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+		mlx_destroy_image(data->mlx, wall.img);
+		mlx_destroy_image(data->mlx, data->img);
 }
