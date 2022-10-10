@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr_gnl.c                                    :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dar_sefrioui <dar_sefrioui@student.1337    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 16:07:27 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/10 17:10:22 by dar_sefriou      ###   ########.fr       */
+/*   Created: 2022/10/10 17:53:09 by dar_sefriou       #+#    #+#             */
+/*   Updated: 2022/10/10 17:55:26 by dar_sefriou      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int	ft_strchr_gnl(const char *s, int c)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	char	to_find;
-	int		i;
+	size_t	i;
 
 	i = 0;
-	to_find = (char) c;
-	while (s[i])
-	{
-		if (s[i] == to_find)
-			return (i);
+	while (s1[i] && s2[i] && s1[i] == s2[i])
 		i++;
-	}
-	if (s[i] == to_find)
-		return (i);
-	return (-1);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

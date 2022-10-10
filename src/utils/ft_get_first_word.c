@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr_gnl.c                                    :+:      :+:    :+:   */
+/*   ft_get_first_word.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dar_sefrioui <dar_sefrioui@student.1337    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 16:07:27 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/10 17:10:22 by dar_sefriou      ###   ########.fr       */
+/*   Created: 2022/10/10 17:09:22 by dar_sefriou       #+#    #+#             */
+/*   Updated: 2022/10/10 17:57:54 by dar_sefriou      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_strchr_gnl(const char *s, int c)
+char	*ft_get_first_word(char *str)
 {
-	char	to_find;
+	char	*first_word;
 	int		i;
+	size_t	word_len;
 
 	i = 0;
-	to_find = (char) c;
-	while (s[i])
-	{
-		if (s[i] == to_find)
-			return (i);
+	if (!str)
+		return NULL;
+	while (str[i] && str[i] == ' ')
 		i++;
-	}
-	if (s[i] == to_find)
-		return (i);
-	return (-1);
+	word_len = i;
+	if (word_len >= ft_strlen(str))
+		return NULL;
+	while (str[word_len] && str[word_len] != ' ')
+		word_len++;
+	first_word = ft_substr(str, i, word_len - i);
+	return (first_word);
 }

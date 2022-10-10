@@ -2,9 +2,12 @@ CC= cc
 
 FLAGS= -Wall -Wextra -Werror
 
-FILES= cub3d draw_with_pixels/fill_buffer_by_pixels draw_with_pixels/draw draw_with_pixels/render_for_player\
-draw_with_pixels/find_wall utils/get_infos draw_with_pixels/texture draw_with_pixels/draw_evertn draw_with_pixels/draw_walls \
-parsing/ft_exit_error parsing/ft_parse utils/get_next_line utils/ft_strchr_gnl parsing/ft_parse_file
+FILES=	cub3d draw_with_pixels/fill_buffer_by_pixels draw_with_pixels/draw \
+		draw_with_pixels/render_for_player draw_with_pixels/find_wall utils/get_infos \
+		draw_with_pixels/texture draw_with_pixels/draw_evertn draw_with_pixels/draw_walls \
+		parsing/ft_exit_error parsing/ft_parse utils/get_next_line utils/ft_strchr_gnl \
+		parsing/ft_parse_file parsing/ft_fill_state parsing/ft_extract_textures_colors \
+		utils/ft_get_first_word parsing/ft_extract_texture
 
 B_DIR=build
 

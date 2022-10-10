@@ -22,6 +22,12 @@
 # define SIZE (200 / 18)
 # define SQUARE_M 200
 # define LEFT 124
+
+# define NOTHING -1
+# define EMPTY 0
+# define WALL 1
+# define PLAYER 2
+
 # define RIGHT 123
  
 typedef struct s_player
