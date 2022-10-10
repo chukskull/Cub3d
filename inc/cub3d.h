@@ -15,8 +15,10 @@
 # define W 13
 # define S 1
 # define D 2
-# define SIZE (200/ 18)
+# define SIZE (200 / 18)
 # define SQUARE_M 200
+# define LEFT 124
+# define RIGHT 123
  
 typedef struct s_player
 {
