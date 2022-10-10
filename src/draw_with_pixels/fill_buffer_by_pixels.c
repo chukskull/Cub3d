@@ -107,11 +107,11 @@ void fill_pixel(t_data *data, int x, int y, int color)
 	*pi = color;
 }
 
-int	test_pixel(t_data *data, int x, int y)
+int	test_pixel(int x, int y, int width, unsigned int *addr)
 {
 	unsigned int	*pi;
 
-	pi = data->addr2 + (y * data->pop) + x;
+	pi = addr + (y * width) + x;
 	return (*pi);
 }
 

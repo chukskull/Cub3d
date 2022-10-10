@@ -21,8 +21,15 @@ void initial(t_data *data)
 	data->img = mlx_new_image(data->mlx, SQUARE_M, SQUARE_M);
 	data->addr = (unsigned int *)mlx_get_data_addr(data->img, &data->usls, &data->usls, &data->usls);
 	// mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-	data->img2 = mlx_xpm_file_to_image(data->mlx, "/Users/snagat/Desktop/42-cube3d/src/images/zlijfassi.xpm", &data->pop, &data->pop2);
+	data->img2 = mlx_xpm_file_to_image(data->mlx, "/Users/snagat/Desktop/42-cube3d/src/images/zlijfassi.xpm", &data->fassi, &data->fassi2);
 	data->addr2 =  (unsigned int *)mlx_get_data_addr(data->img2, &data->usls, &data->usls, &data->usls);
+	data->img3 = mlx_xpm_file_to_image(data->mlx, "/Users/snagat/Desktop/42-cube3d/src/images/zlijcasa.xpm", &data->casa, &data->casa2);
+	data->addr3 =  (unsigned int *)mlx_get_data_addr(data->img3, &data->usls, &data->usls, &data->usls);
+	data->img4 = mlx_xpm_file_to_image(data->mlx, "/Users/snagat/Desktop/42-cube3d/src/images/zlpop.xpm", &data->pop, &data->pop2);
+	data->addr4 =  (unsigned int *)mlx_get_data_addr(data->img4, &data->usls, &data->usls, &data->usls);
+	data->img5 = mlx_xpm_file_to_image(data->mlx, "/Users/snagat/Desktop/42-cube3d/src/images/kozina_2_.xpm", &data->kozina, &data->kozina2);
+	data->addr5 =  (unsigned int *)mlx_get_data_addr(data->img5, &data->usls, &data->usls, &data->usls);
+
 	 draw_map_p(data, 1);
 	// while(i  < 64)
 	// {

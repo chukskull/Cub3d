@@ -44,7 +44,10 @@ t_player	find_wall(int map[18][18], t_data *data, double ray_angle)
 		return(horiz);
 	}
 	else
+	{
+		horiz.zone = 2;
 		return(ver);
+	}
 }
 
 t_player	find_wall_horiz(int map[18][18], t_data *data, double ray_an)

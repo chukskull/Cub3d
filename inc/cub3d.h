@@ -34,12 +34,24 @@ typedef struct s_data
 	void		*mlx;
 	void		*img;
 	void		*img2;
+	void		*img3;
+	void		*img4;
+	void		*img5;
 	void		*win;
 	t_player	*player;	
 	unsigned int *addr;
 	unsigned int *addr2;
+	unsigned int *addr3;
+	unsigned int *addr4;
+	unsigned int *addr5;
 	int			pop;
 	int			pop2;
+	int			fassi;
+	int			fassi2;
+	int			casa;
+	int			casa2;
+	int			kozina;
+	int			kozina2;
 } t_data;
 
 typedef struct s_ray
@@ -57,7 +69,7 @@ typedef	struct s_wall
 } t_wall;
 
 
-
+int			test_pixel(int x, int y, int width, unsigned int *addr);
 void		fill_pixel(t_data *data, int x, int y, int color);
 void		draw_square(t_data *data, int x, int y, int color);
 void		draw_player(t_data *data, int x, int y, int color);
@@ -69,8 +81,7 @@ t_player	find_wall_horiz(int map[18][18], t_data *data,  double ray_angle);
 t_player	find_wall_vert(int map[18][18], t_data *data,  double ray_angle);
 t_player	find_wall(int map[18][18], t_data *data, double ray_angle);
 void    	fill_pixel_2(t_data *data, int x, int y, int color);
-int			test_pixel(t_data *data, int x, int y);
-void		ft_texture(t_data *wall, int x, int y, t_data *data, t_player delta, int wallh);
+void    	ft_texture(t_data *wall, int x, int y, t_data *data, t_player delta, int h, int	width, unsigned int *addr);
 void		draw_everything(t_data *data, int map[18][18], t_data *wall);
 void		draw_walls(t_data *wall,t_player delta,t_data *data, t_ray *ray);
 double		scale(double val, double max, double range, double range2);
