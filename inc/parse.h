@@ -6,7 +6,7 @@
 /*   By: dar_sefrioui <dar_sefrioui@student.1337    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:09:34 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/10 15:25:18 by dar_sefriou      ###   ########.fr       */
+/*   Updated: 2022/10/10 15:59:59 by dar_sefriou      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define PARSE_H
 
 # include "cub3d.h"
+# include "get_next_line.h"
 
 typedef struct s_state {
 	char	*north_texture;
@@ -31,6 +32,6 @@ typedef struct s_state {
 
 t_state *ft_parse(int ac, char **av);
 void    ft_exit_error(char *error, int status);
-
+char	*ft_parse_file(char *filename, t_state *state);
 
 #endif

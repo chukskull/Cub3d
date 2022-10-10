@@ -6,9 +6,11 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <math.h>
+# include <fcntl.h>
 # include "libft.h"
 # include "parse.h"
 
+# define BUFFER_SIZE 100
 # define HEIGHT 700
 # define WIDTH 1200
 # define PI 3.14159265
