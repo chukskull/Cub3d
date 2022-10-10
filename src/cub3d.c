@@ -29,19 +29,7 @@ void initial(t_data *data)
 	data->addr4 =  (unsigned int *)mlx_get_data_addr(data->img4, &data->usls, &data->usls, &data->usls);
 	data->img5 = mlx_xpm_file_to_image(data->mlx, "src/images/kozina_2_.xpm", &data->kozina, &data->kozina2);
 	data->addr5 =  (unsigned int *)mlx_get_data_addr(data->img5, &data->usls, &data->usls, &data->usls);
-
-	 draw_map_p(data, 1);
-	// while(i  < 64)
-	// {
-	// 	int j = 0;
-	// 	while(j < 64)
-	// 	{
-	// 		fill_pixel_2(data, i, j, test_pixel(data, i,j));
-	// 		j++;
-	// 	}
-	// 	i++;
-	// }
-	// mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+	draw_map_p(data, 1);
 	mlx_hook(data->win, 02, 1L<<0, key_hook, data);
 	mlx_loop(data->mlx);
 }
