@@ -6,7 +6,7 @@
 /*   By: dar_sefrioui <dar_sefrioui@student.1337    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:37:25 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/10 16:26:33 by dar_sefriou      ###   ########.fr       */
+/*   Updated: 2022/10/10 21:39:18 by dar_sefriou      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,12 @@ static int	ft_open_file(char *filename)
 	return fd;
 }
 
-char	*ft_parse_file(char *filename, t_state *state)
+char	*ft_parse_file(char *filename)
 {
 	char    *line;
 	char    *content;
 	int		fd;
 
-	(void) state;
 	fd = ft_open_file(filename);
 	if (fd < 0) return NULL;
 	content = ft_strdup("");

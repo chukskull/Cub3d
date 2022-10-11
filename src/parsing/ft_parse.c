@@ -6,7 +6,7 @@
 /*   By: dar_sefrioui <dar_sefrioui@student.1337    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:01:14 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/10 17:58:56 by dar_sefriou      ###   ########.fr       */
+/*   Updated: 2022/10/10 21:40:31 by dar_sefriou      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ t_state *ft_parse(int ac, char **av)
 	char	*file_content;
 
     if (ac < 2 || !ft_check_extension(av[1], ".cub")) return NULL;
-	state = (t_state *) malloc(sizeof(t_state));
-	if (!state) return NULL;
-	file_content = ft_parse_file(av[1], state);
+	file_content = ft_parse_file(av[1]);
 	if (!file_content) return NULL;
 	printf("file read correctly, filling state\n");
+	state = (t_state *) malloc(sizeof(t_state));
+	if (!state) return NULL;
 	ft_fill_state(file_content, state);
 	free(file_content);
     return state;
