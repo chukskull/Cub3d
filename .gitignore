@@ -1,7 +1,7 @@
 build/
 *.o
 cub3d
-.vscode
+.vscode/
 *.dSYM
 *.out
 .DS_Store
