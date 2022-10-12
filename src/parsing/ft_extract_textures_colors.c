@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_extract_textures_colors.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dar_sefrioui <dar_sefrioui@student.1337    +#+  +:+       +#+        */
+/*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:00:32 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/10 18:05:47 by dar_sefriou      ###   ########.fr       */
+/*   Updated: 2022/10/12 15:56:23 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,18 @@ static void    ft_extract_color(char *line, char *type, t_state *state)
 	{
 		if (state->floor_color != -1)
 			ft_exit_error("Error - floor color already set", EXIT_FAILURE);
-		state->floor_color = 1;
+		state->floor_color = ft_get_color(line);
+		if (state->floor_color == -1)
+			ft_exit_error("Error", EXIT_FAILURE);
 		printf("COLOR DETECTED - set floor color correctly.\n");
 	}
 	else if (!ft_strcmp(type, "C"))
 	{
 		if (state->ceiling_color != -1)
 			ft_exit_error("Error - ceiling color already set", EXIT_FAILURE);
-		state->ceiling_color = 1;
+		state->ceiling_color = ft_get_color(line);
+		if (state->floor_color == -1)
+			ft_exit_error("Error", EXIT_FAILURE);
 		printf("COLOR DETECTED - set floor color correctly.\n");
 	}
 	else

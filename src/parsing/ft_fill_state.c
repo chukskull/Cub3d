@@ -6,24 +6,24 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:36:10 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/11 22:33:40 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/12 15:58:20 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	ft_free_lines(char **lines)
+void	ft_free_array(char **array)
 {
 	int	i;
 
 	i = 0;
-	while (lines[i])
+	while (array[i])
 	{
-		free(lines[i]);
-		lines[i++] = NULL;
+		free(array[i]);
+		array[i++] = NULL;
 	}
-	free(lines);
-	lines = NULL;
+	free(array);
+	array = NULL;
 }
 
 static int	ft_count_lines(char **lines)
@@ -63,5 +63,5 @@ void	ft_fill_state(char *filename, t_state *state)
 	lines_count = ft_count_lines(lines);
 	skip_file_head = ft_extract_textures_colors(lines, lines_count, state);
 	ft_extract_map(lines + skip_file_head, lines_count - skip_file_head, state);
-	ft_free_lines(lines);
+	ft_free_array(lines);
 }
