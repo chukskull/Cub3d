@@ -6,7 +6,7 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:40:39 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/11 22:35:56 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/12 14:54:08 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,27 +57,44 @@ static int	ft_invalid_map_line(char **file_content, int line_index)
 static int	ft_check_correct_map(char **file_content, int lines_len)
 {
 	int	i;
+	int	player_found;
 
 	i = 0;
+	player_found = 0;
 	while (i < lines_len)
 	{
 		if (ft_invalid_map_line(file_content, i))
 			ft_exit_error("Error", EXIT_FAILURE);
+		if (ft_found_player(file_content[i]))
+		{
+			if (player_found)
+			{
+				printf("multiple players found");
+				ft_exit_error("Error", EXIT_FAILURE);
+			}
+			player_found = 1;
+		}
 		i++;
+	}
+	if (!player_found)
+	{
+		printf("no player found");
+		ft_exit_error("Error", EXIT_FAILURE);
 	}
 	return (1);
 }
 
 void	ft_extract_map(char **file_content, int lines_len, t_state *state)
 {
-	// int	map_width;
-	// int	map_height;
+	int	map_width;
+	int	map_height;
 
 	(void) state;
 	if (!file_content || !file_content[0] || lines_len <= 1)
 		ft_exit_error("Error", EXIT_FAILURE);
 	ft_check_correct_map(file_content, lines_len);
 	printf("map is valid\n");
-	// map_width = ft_get_map_width(file_content, lines_len);
-	// map_height = ft_get_map_height(file_content, lines_len);
+	map_width = ft_get_map_width(file_content, lines_len);
+	map_height = lines_len;
+	printf("map width: %d, map height: %d\n", map_width, map_height);
 }
