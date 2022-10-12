@@ -6,7 +6,7 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:40:39 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/12 15:19:36 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/12 15:30:05 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,8 @@ void	ft_extract_map(char **file_content, int lines_len, t_state *state)
 	ft_fill_map(file_content, state);
 	ft_print_map(state);
 	printf("player is looking at: %c\n", state->player_angle);
+	printf("north	texture: |%s|\n", state->north_texture);
+	printf("south	texture: |%s|\n", state->south_texture);
+	printf("east	texture: |%s|\n", state->east_texture);
+	printf("west	texture: |%s|\n", state->west_texture);
 }

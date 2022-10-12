@@ -6,7 +6,7 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:09:34 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/12 15:15:17 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/12 15:30:43 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,8 @@ int		ft_found_player(char *line);
 void	ft_fill_map(char **file_content, t_state *state);
 void	ft_print_map(t_state *state);
 void	ft_free_state(t_state *state);
+void	ft_free_null(void **ptr);
+char	*ft_get_second_word(char *str);
+int		ft_array_len(char **array);
 
 #endif

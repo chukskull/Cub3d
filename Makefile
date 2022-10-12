@@ -8,7 +8,8 @@ FILES=	cub3d draw_with_pixels/fill_buffer_by_pixels draw_with_pixels/draw \
 		parsing/ft_exit_error parsing/ft_parse utils/get_next_line utils/ft_strchr_gnl \
 		parsing/ft_parse_file parsing/ft_fill_state parsing/ft_fill_map parsing/ft_extract_textures_colors \
 		utils/ft_get_first_word parsing/ft_extract_texture parsing/ft_extract_map \
-		parsing/ft_invalid_surroundings parsing/ft_map_resolution parsing/ft_free_state
+		parsing/ft_invalid_surroundings parsing/ft_map_resolution parsing/ft_free_state \
+		utils/ft_get_second_word
 
 B_DIR=build
 

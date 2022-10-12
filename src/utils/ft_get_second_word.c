@@ -1,46 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_state.c                                    :+:      :+:    :+:   */
+/*   ft_get_second_word.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/12 15:12:48 by olabrahm          #+#    #+#             */
-/*   Updated: 2022/10/12 15:26:36 by olabrahm         ###   ########.fr       */
+/*   Created: 2022/10/12 15:23:15 by olabrahm          #+#    #+#             */
+/*   Updated: 2022/10/12 15:29:02 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ft_free_null(void **ptr)
-{
-	if (*ptr)
-	{
-		free(*ptr);
-		*ptr = NULL;
-	}
-}
-
-static void	ft_free_map(int **map)
+static void	ft_free_all_but_index(char **array, int index)
 {
 	int	i;
 
 	i = 0;
-	while (map[i])
+	while (array[i])
 	{
-		ft_free_null((void **) &map[i]);
+		if (i != index)
+			ft_free_null((void **) &array[i]);
 		i++;
 	}
-	ft_free_null((void **) map);
-	map = NULL;
+	ft_free_null((void **) array);
 }
 
-void	ft_free_state(t_state *state)
+int	ft_array_len(char **array)
 {
-	ft_free_null((void **) &state->north_texture);
-	ft_free_null((void **) &state->south_texture);
-	ft_free_null((void **) &state->east_texture);
-	ft_free_null((void **) &state->west_texture);
+	int	i;
 
-	ft_free_map(state->map);
+	i = 0;
+	while (array[i])
+		i++;
+	return (i);
+}
+
+char	*ft_get_second_word(char *str)
+{
+	int		i;
+	char	**words;
+
+	i = 0;
+	words = ft_split(str, ' ');
+	if (!words || ft_array_len(words) != 2)
+		return (NULL);
+	ft_free_all_but_index(words, 1);
+	return (words[1]);
 }
