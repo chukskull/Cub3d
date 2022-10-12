@@ -6,7 +6,7 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:00:32 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/12 19:24:57 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/12 19:47:14 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	ft_extract_color(char *line, char *type, t_state *state)
 {
-	(void) line;
 	if (!ft_strcmp(type, "F"))
 	{
 		if (state->floor_color != -1)
@@ -28,7 +27,7 @@ static void	ft_extract_color(char *line, char *type, t_state *state)
 		if (state->ceiling_color != -1)
 			ft_exit_error("Error", EXIT_FAILURE);
 		state->ceiling_color = ft_get_color(line);
-		if (state->floor_color == -1)
+		if (state->ceiling_color == -1)
 			ft_exit_error("Error", EXIT_FAILURE);
 	}
 	else
