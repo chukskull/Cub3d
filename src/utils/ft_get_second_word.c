@@ -6,7 +6,7 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:23:15 by olabrahm          #+#    #+#             */
-/*   Updated: 2022/10/12 15:29:02 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/12 15:48:04 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ static void	ft_free_all_but_index(char **array, int index)
 	while (array[i])
 	{
 		if (i != index)
-			ft_free_null((void **) &array[i]);
+			free(array[i]);
 		i++;
 	}
-	ft_free_null((void **) array);
+	free(array);
 }
 
 int	ft_array_len(char **array)
@@ -40,11 +40,14 @@ char	*ft_get_second_word(char *str)
 {
 	int		i;
 	char	**words;
+	char	*second_word;
 
 	i = 0;
 	words = ft_split(str, ' ');
+	printf("address: %p\n", words);
 	if (!words || ft_array_len(words) != 2)
 		return (NULL);
+	second_word = words[1];
 	ft_free_all_but_index(words, 1);
-	return (words[1]);
+	return (second_word);
 }
