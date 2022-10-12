@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dar_sefrioui <dar_sefrioui@student.1337    +#+  +:+       +#+        */
+/*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:37:25 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/10 21:39:18 by dar_sefriou      ###   ########.fr       */
+/*   Updated: 2022/10/12 17:39:12 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ char	*ft_parse_file(char *filename)
 	line = get_next_line(fd);
 	while (line)
 	{
+		if (!ft_strcmp(line, "\n"))
+		{
+			free(line);
+			line = ft_strdup(" ");
+			continue ;
+		}
 		content = ft_strjoin(content, line);
 		if (!content)
 			return NULL;

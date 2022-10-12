@@ -6,7 +6,7 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:40:39 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/12 16:03:38 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/12 17:28:25 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,14 @@ static int	ft_invalid_map_line(char **file_content, int line_index)
 {
 	int	i;
 
-	if (has_no_ones(file_content[line_index]))
+printf("line: |%s| - has %zu chars\n", file_content[line_index], ft_strlen(file_content[line_index]));
+	if (ft_strlen(file_content[line_index]) == 0
+		|| has_no_ones(file_content[line_index]))
 		return (1);
 	i = 0;
 	while (file_content[line_index][i])
 	{
-		if (
-			ft_invalid_char(file_content[line_index][i])
+		if (ft_invalid_char(file_content[line_index][i])
 			|| ft_invalid_surroundings(file_content, line_index, i)
 		)
 		{
