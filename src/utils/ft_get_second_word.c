@@ -6,7 +6,7 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:23:15 by olabrahm          #+#    #+#             */
-/*   Updated: 2022/10/12 15:48:04 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/12 16:08:57 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ char	*ft_get_second_word(char *str)
 
 	i = 0;
 	words = ft_split(str, ' ');
-	printf("address: %p\n", words);
 	if (!words || ft_array_len(words) != 2)
 		return (NULL);
 	second_word = words[1];
