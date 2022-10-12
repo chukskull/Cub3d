@@ -6,7 +6,7 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:01:14 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/12 17:48:12 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/12 18:57:53 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ t_state	*ft_parse(int ac, char **av)
 	file_content = ft_parse_file(av[1]);
 	if (!file_content)
 		return (NULL);
-	printf("file read correctly, filling state\n");
 	state = (t_state *) malloc(sizeof(t_state));
 	if (!state)
 		return (NULL);

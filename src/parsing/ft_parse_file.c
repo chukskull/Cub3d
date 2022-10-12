@@ -6,7 +6,7 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:37:25 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/12 17:51:23 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/12 19:22:03 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,6 @@ char	*ft_parse_file(char *filename)
 	line = get_next_line(fd);
 	while (line)
 	{
-		if (!ft_strcmp(line, "\n"))
-		{
-			free(line);
-			line = ft_strdup(" ");
-			continue ;
-		}
 		content = ft_strjoin(content, line);
 		if (!content)
 			return (NULL);

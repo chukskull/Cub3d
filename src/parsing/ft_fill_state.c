@@ -6,7 +6,7 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:36:10 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/12 15:58:20 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/12 19:23:12 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,28 @@ static void	ft_empty_state(t_state *state)
 	state->player_angle = 0;
 }
 
-void	ft_fill_state(char *filename, t_state *state)
+void	ft_print_lines(char **lines)
+{
+	int	i;
+
+	i = 0;
+	printf("0-----------------------------\n");
+	while (lines[i])
+	{
+		printf("%s\n", lines[i]);
+		i++;
+	}
+	printf("0-----------------------------\n");
+}
+
+void	ft_fill_state(char *file_content, t_state *state)
 {
 	char	**lines;
 	int		lines_count;
 	int		skip_file_head;
 
 	ft_empty_state(state);
-	lines = ft_split(filename, '\n');
+	lines = ft_get_lines(file_content);
 	if (!lines)
 		ft_exit_error("Error", EXIT_FAILURE);
 	lines_count = ft_count_lines(lines);
