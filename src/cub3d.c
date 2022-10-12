@@ -47,5 +47,6 @@ int main(int ac, char **av)
 	data = malloc(sizeof(t_data));
 	data->player = malloc(sizeof(t_player));
 	initial(data);
+	ft_free_state(state);
 	return (0);
 }

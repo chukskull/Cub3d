@@ -6,7 +6,7 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:40:39 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/12 14:54:08 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/12 15:19:36 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ static int	has_no_ones(char *line)
 
 static int	ft_invalid_char(char c)
 {
-	return (c != '0' && c != '1' && c != 'N' && c != 'S' && c != 'E'
-		&& c != 'W' && c != ' ');
+	return (c != '0' && c != '1' && c != ' ' && !ft_char_is_player(c));
 }
 
 static int	ft_invalid_map_line(char **file_content, int line_index)
@@ -86,15 +85,14 @@ static int	ft_check_correct_map(char **file_content, int lines_len)
 
 void	ft_extract_map(char **file_content, int lines_len, t_state *state)
 {
-	int	map_width;
-	int	map_height;
-
-	(void) state;
 	if (!file_content || !file_content[0] || lines_len <= 1)
 		ft_exit_error("Error", EXIT_FAILURE);
 	ft_check_correct_map(file_content, lines_len);
 	printf("map is valid\n");
-	map_width = ft_get_map_width(file_content, lines_len);
-	map_height = lines_len;
-	printf("map width: %d, map height: %d\n", map_width, map_height);
+	state->map_width = ft_get_map_width(file_content, lines_len);
+	state->map_height = lines_len;
+	printf("map width: %d, map height: %d\n", state->map_width, state->map_height);
+	ft_fill_map(file_content, state);
+	ft_print_map(state);
+	printf("player is looking at: %c\n", state->player_angle);
 }

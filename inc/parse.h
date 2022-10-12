@@ -6,7 +6,7 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:09:34 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/12 14:51:36 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/12 15:15:17 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,8 @@ int		ft_invalid_surroundings(char **file_content, int line_idx, int char_idx);
 int		ft_char_is_player(char c);
 int		ft_get_map_width(char **file_content, int lines_len);
 int		ft_found_player(char *line);
+void	ft_fill_map(char **file_content, t_state *state);
+void	ft_print_map(t_state *state);
+void	ft_free_state(t_state *state);
 
 #endif
