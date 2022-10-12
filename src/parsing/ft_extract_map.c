@@ -6,7 +6,7 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:40:39 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/12 19:26:55 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/12 19:35:28 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ static int	ft_invalid_map_line(char **file_content, int line_index)
 {
 	int	i;
 
-	if (ft_strlen(file_content[line_index]) == 0
-		|| has_no_ones(file_content[line_index]))
+	if (has_no_ones(file_content[line_index]))
 		return (1);
 	i = 0;
 	while (file_content[line_index][i])
@@ -54,12 +53,20 @@ static int	ft_check_correct_map(char **file_content, int lines_len)
 {
 	int	i;
 	int	player_found;
+	int	reached_end;
 
 	i = 0;
 	player_found = 0;
+	reached_end = 0;
 	while (i < lines_len)
 	{
-		if (ft_invalid_map_line(file_content, i))
+		if (ft_strlen(file_content[i]) == 0)
+		{
+			reached_end = 1;
+			i++;
+			continue ;
+		}
+		else if (reached_end || ft_invalid_map_line(file_content, i))
 			ft_exit_error("Error", EXIT_FAILURE);
 		if (ft_found_player(file_content[i]))
 		{
