@@ -6,7 +6,7 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:12:48 by olabrahm          #+#    #+#             */
-/*   Updated: 2022/10/12 15:48:44 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/12 17:44:27 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,5 @@ void	ft_free_state(t_state *state)
 	free(&state->south_texture);
 	free(&state->east_texture);
 	free(&state->west_texture);
-
 	ft_free_map(state->map);
 }

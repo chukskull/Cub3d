@@ -6,7 +6,7 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:37:25 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/12 17:39:12 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/12 17:51:23 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,22 @@ static int	ft_open_file(char *filename)
 {
 	int	fd;
 
-	if (!filename || ft_is_dir(filename)) return -1;
+	if (!filename || ft_is_dir(filename))
+		return (-1);
 	fd = open(filename, O_RDONLY);
-	return fd;
+	return (fd);
 }
 
 char	*ft_parse_file(char *filename)
 {
-	char    *line;
-	char    *content;
+	char	*line;
+	char	*content;
 	int		fd;
 
 	fd = ft_open_file(filename);
-	if (fd < 0) return NULL;
+	if (fd < 0)
+		return (NULL);
 	content = ft_strdup("");
-	if (!content) return NULL;
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -53,10 +54,9 @@ char	*ft_parse_file(char *filename)
 		}
 		content = ft_strjoin(content, line);
 		if (!content)
-			return NULL;
+			return (NULL);
 		free(line);
 		line = get_next_line(fd);
 	}
-	close(fd);
-	return content;
+	return (close(fd), content);
 }

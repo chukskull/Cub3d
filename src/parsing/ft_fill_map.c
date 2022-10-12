@@ -6,7 +6,7 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 14:55:54 by olabrahm          #+#    #+#             */
-/*   Updated: 2022/10/12 15:20:03 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/12 17:44:20 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static void	ft_fill_line(char *line, int *buffer, int width, t_state *state)
 			state->player_angle = line[i];
 		}
 		else
-			// for more security
 			ft_exit_error("Error", EXIT_FAILURE);
 		i++;
 	}
@@ -47,7 +46,7 @@ void	ft_fill_map(char **file_content, t_state *state)
 	map = (int **) malloc((state->map_height + 1) * sizeof(int *));
 	if (!map)
 		ft_exit_error("Error", EXIT_FAILURE);
-	map[state->map_height] = NULL; // NULL terminate the map
+	map[state->map_height] = NULL;
 	i = 0;
 	while (i < state->map_height)
 	{

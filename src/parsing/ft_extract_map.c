@@ -6,7 +6,7 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:40:39 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/12 17:28:25 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/12 17:48:45 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static int	ft_invalid_map_line(char **file_content, int line_index)
 {
 	int	i;
 
-printf("line: |%s| - has %zu chars\n", file_content[line_index], ft_strlen(file_content[line_index]));
 	if (ft_strlen(file_content[line_index]) == 0
 		|| has_no_ones(file_content[line_index]))
 		return (1);
@@ -45,10 +44,7 @@ printf("line: |%s| - has %zu chars\n", file_content[line_index], ft_strlen(file_
 		if (ft_invalid_char(file_content[line_index][i])
 			|| ft_invalid_surroundings(file_content, line_index, i)
 		)
-		{
-			printf("invalid character, or misplacement of char at line %d, char %d, (%c)", line_index, i, file_content[line_index][i]);
 			return (1);
-		}
 		i++;
 	}
 	return (0);
@@ -68,19 +64,13 @@ static int	ft_check_correct_map(char **file_content, int lines_len)
 		if (ft_found_player(file_content[i]))
 		{
 			if (player_found)
-			{
-				printf("multiple players found");
 				ft_exit_error("Error", EXIT_FAILURE);
-			}
 			player_found = 1;
 		}
 		i++;
 	}
 	if (!player_found)
-	{
-		printf("no player found");
 		ft_exit_error("Error", EXIT_FAILURE);
-	}
 	return (1);
 }
 
@@ -92,7 +82,8 @@ void	ft_extract_map(char **file_content, int lines_len, t_state *state)
 	printf("map is valid\n");
 	state->map_width = ft_get_map_width(file_content, lines_len);
 	state->map_height = lines_len;
-	printf("map width: %d, map height: %d\n", state->map_width, state->map_height);
+	printf("map width: %d, map height: %d\n",
+		state->map_width, state->map_height);
 	ft_fill_map(file_content, state);
 	ft_print_map(state);
 	printf("player is looking at: %c\n", state->player_angle);
