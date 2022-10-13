@@ -1,4 +1,5 @@
 #include "cub3d.h"
+#include "utils.h"
 
 
 void	draw_p(t_data *data, int color)
@@ -28,6 +29,7 @@ void	draw_map_p(t_data *data, int init)
 
 	r = 0;
 	c = 0;
+		printf("%dmmm\n", get_no_height(data));
 	int map[18][18] =
 		{
 			{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -49,6 +51,7 @@ void	draw_map_p(t_data *data, int init)
 			{1,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,1,1},
 			{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 		};
+		
 	while(r < 18)
 		{
 			c = 0;

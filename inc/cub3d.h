@@ -23,6 +23,7 @@
 # define SQUARE_M 200
 # define LEFT 124
 
+// int	 **map is filled with these
 # define NOTHING -1
 # define EMPTY 0
 # define WALL 1
@@ -40,30 +41,43 @@ typedef struct s_player
 	double	y;
 	int		flag;
 }	t_player;
+
+
+typedef	struct s_texture
+{
+	char			*dire;
+	int				height;
+	int				width;
+	unsigned int 	*addr_south;
+	unsigned int 	*addr_west;
+	unsigned int 	*addr_east;
+	unsigned int 	*addr_north;
+	void			*img_north;
+	void			*img_south;
+	void			*img_west;
+	void			*img_east;
+	int				ea_width;
+	int				ea_height;
+	int				no_width;
+	int				no_height;
+	int				west_width;
+	int				west_height;
+	int				sou_width;
+	int				sou_height;
+}t_texture;
+
+
+
 typedef struct s_data
 {
 	int			usls;
+	unsigned int	*addr;
 	void		*mlx;
 	void		*img;
-	void		*img2;
-	void		*img3;
-	void		*img4;
-	void		*img5;
 	void		*win;
 	t_player	*player;	
-	unsigned int *addr;
-	unsigned int *addr2;
-	unsigned int *addr3;
-	unsigned int *addr4;
-	unsigned int *addr5;
-	int			pop;
-	int			pop2;
-	int			fassi;
-	int			fassi2;
-	int			casa;
-	int			casa2;
-	int			kozina;
-	int			kozina2;
+	t_texture	*texture;
+	t_state	*state;
 } t_data;
 
 typedef struct s_ray
