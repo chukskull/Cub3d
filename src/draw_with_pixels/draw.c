@@ -28,51 +28,27 @@ void	draw_map_p(t_data *data, int init)
 	t_data	wall;
 
 	r = 0;
-	c = 0;
-		printf("%dmmm\n", get_no_height(data));
-	int map[18][18] =
-		{
-			{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-			{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-			{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-			{1,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,1},
-			{1,0,0,1,0,0,0,2,0,0,0,0,0,1,0,0,0,1},
-			{1,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,1},
-			{1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1},
-			{1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,1},
-			{1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,1},
-			{1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,1},
-			{1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,1},
-			{1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,1},
-			{1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,1},
-			{1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,1},
-			{1,0,1,1,1,1,1,1,1,0,0,0,0,1,0,0,0,1},
-			{1,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,1,1},
-			{1,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,1,1},
-			{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-		};
-		
-	while(r < 18)
+	c = 0;	
+	while(r < data->state->map_height)
 		{
 			c = 0;
-			while(c < 18)
+			while(c < data->state->map_width)
 			{
-				if (map[r][c] == 1)
+				if (data->state->map[r][c] == WALL)
 					draw_square(data, c, r, 0x0074af51);
-				else if (map[r][c] == 0 || map[r][c] == 2)
+				else if (data->state->map[r][c] == EMPTY || data->state->map[r][c] == PLAYER)
 					draw_square(data, c, r, 0x00e5dad5);
 				c++;
 			}
 			r++;
 		}
-
 		r = 0;
-		while(r < 18)
+		while(r < data->state->map_height)
 		{
 			c = 0;
-			while(c < 18)
+			while(c < data->state->map_width)
 			{
-				if (map[r][c] == 2 && init ==1)
+				if (data->state->map[r][c] == PLAYER && init == 1)
 					draw_player(data, c,r, 0x00ff0000);
 				else if (init == 0)
 					draw_p(data, 0x00ff0000);
@@ -80,7 +56,7 @@ void	draw_map_p(t_data *data, int init)
 			}
 			r++;
 		}
-		draw_everything(data, map, &wall);
+		draw_everything(data, data->state->map, &wall);
 		mlx_put_image_to_window(data->mlx, data->win, wall.img, 0, 0);
 		mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 		mlx_destroy_image(data->mlx, wall.img);

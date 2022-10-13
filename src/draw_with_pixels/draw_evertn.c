@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-void	draw_everything(t_data *data, int map[18][18], t_data *wall)
+void	draw_everything(t_data *data, int **map, t_data *wall)
 {
 		t_ray		ray;
 		t_player	delta;

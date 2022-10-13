@@ -53,7 +53,6 @@ void initial(t_data *data)
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "cub3d");
 	data->img = mlx_new_image(data->mlx, SQUARE_M, SQUARE_M);
 	data->addr = (unsigned int *)mlx_get_data_addr(data->img, &data->usls, &data->usls, &data->usls);
-	// mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	data->texture = malloc(sizeof(t_texture));
 	ft_memset((void *) data->texture, 0, sizeof(t_texture));
 	while (i < 5)
@@ -61,15 +60,6 @@ void initial(t_data *data)
 		get_textures(data, i);
 		i++;
 	}
-	printf("%d ok\n", get_no_height(data));
-	// data->img2 = mlx_xpm_file_to_image(data->mlx, get_north(data), &data->fassi, &data->fassi2);;
-	// data->addr2 =  (unsigned int *)mlx_get_data_addr(data->img2, &data->usls, &data->usls, &data->usls);
-	// data->img3 = mlx_xpm_file_to_image(data->mlx, get_west(data), &data->casa, &data->casa2);
-	// data->addr3 =  (unsigned int *)mlx_get_data_addr(data->img3, &data->usls, &data->usls, &data->usls);
-	// data->img4 = mlx_xpm_file_to_image(data->mlx, get_east(data), &data->pop, &data->pop2);
-	// data->addr4 =  (unsigned int *)mlx_get_data_addr(data->img4, &data->usls, &data->usls, &data->usls);
-	// data->img5 = mlx_xpm_file_to_image(data->mlx,data->state->south_texture, &data->kozina, &data->kozina2);
-	// data->addr5 =  (unsigned int *)mlx_get_data_addr(data->img5, &data->usls, &data->usls, &data->usls);
 	draw_map_p(data, 1);
 	mlx_hook(data->win, 02, 1L<<0, key_hook, data);
 	mlx_loop(data->mlx);

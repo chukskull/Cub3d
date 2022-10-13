@@ -2,7 +2,7 @@
 
 
 
-// double  find_wall_y(int map[18][18], t_data *data)
+// double  find_wall_y(int **map, t_data *data)
 // {
 // 	int	x;
 // 	int y;
@@ -25,7 +25,7 @@
 // 	return(y);
 // }
 
-t_player	find_wall(int map[18][18], t_data *data, double ray_angle)
+t_player	find_wall(int **map, t_data *data, double ray_angle)
 {
 	t_player	horiz;
 	t_player	ver;
@@ -50,7 +50,7 @@ t_player	find_wall(int map[18][18], t_data *data, double ray_angle)
 	}
 }
 
-t_player	find_wall_horiz(int map[18][18], t_data *data, double ray_an)
+t_player	find_wall_horiz(int **map, t_data *data, double ray_an)
 {
 	int			x;
 	int			y;
@@ -78,7 +78,7 @@ t_player	find_wall_horiz(int map[18][18], t_data *data, double ray_an)
 		dx = horiz.dx;
 		horiz.dy += data->player->y;
 		dy = horiz.dy;
-		if (dx > 18 || dx < 0 || dy > 18 || dy < 0)
+		if (dx > data->state->map_width || dx < 0 || dy > data->state->map_height || dy < 0)
 			break ;
 		if ( (map[dy - 1][dx] == 1 || map[dy][dx] == 1))
 			break ;
@@ -86,7 +86,7 @@ t_player	find_wall_horiz(int map[18][18], t_data *data, double ray_an)
 	return(horiz);
 }
 
-t_player	find_wall_vert(int map[18][18], t_data *data, double ray_an)
+t_player	find_wall_vert(int **map, t_data *data, double ray_an)
 {
 	int	x;
 	int y;
@@ -113,7 +113,7 @@ t_player	find_wall_vert(int map[18][18], t_data *data, double ray_an)
 		ver.dy = -(ver.dx * (tan(ray_an)));
 		ver.dx += data->player->x;
 		ver.dy += data->player->y;
-		if ((ver.dy < 0 || ver.dy > 18) )
+		if ((ver.dy < 0 || ver.dy > data->state->map_height) )
 		{
 			ver.flag = 1;
 			break ;
