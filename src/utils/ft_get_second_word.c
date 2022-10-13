@@ -6,25 +6,11 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:23:15 by olabrahm          #+#    #+#             */
-/*   Updated: 2022/10/12 16:08:57 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:18:15 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static void	ft_free_all_but_index(char **array, int index)
-{
-	int	i;
-
-	i = 0;
-	while (array[i])
-	{
-		if (i != index)
-			free(array[i]);
-		i++;
-	}
-	free(array);
-}
 
 int	ft_array_len(char **array)
 {
@@ -46,7 +32,9 @@ char	*ft_get_second_word(char *str)
 	words = ft_split(str, ' ');
 	if (!words || ft_array_len(words) != 2)
 		return (NULL);
-	second_word = words[1];
-	ft_free_all_but_index(words, 1);
+	second_word = ft_strdup(words[1]);
+	if (!second_word)
+		ft_exit_error("Error", EXIT_FAILURE);
+	ft_free_array(words);
 	return (second_word);
 }

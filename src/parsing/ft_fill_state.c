@@ -6,7 +6,7 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:36:10 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/12 19:39:42 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:18:42 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	ft_fill_state(char *file_content, t_state *state)
 	int		skip_file_head;
 
 	ft_empty_state(state);
-	lines = ft_get_lines(file_content);
+	lines = ft_split(file_content, '\n');
 	if (!lines)
 		ft_exit_error("Error", EXIT_FAILURE);
 	lines_count = ft_count_lines(lines);
