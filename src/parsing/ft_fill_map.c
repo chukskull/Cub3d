@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fill_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: snagat <snagat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 14:55:54 by olabrahm          #+#    #+#             */
-/*   Updated: 2022/10/12 17:44:20 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/13 22:54:05 by snagat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	ft_fill_line(char *line, int *buffer, int width, t_state *state)
 		else if (line[i] == '1')
 			buffer[i] = WALL;
 		else if (line[i] == ' ')
-			buffer[i] = NOTHING;
+			buffer[i] = EMPTY;
 		else if (ft_char_is_player(line[i]))
 		{
 			buffer[i] = PLAYER;
@@ -35,7 +35,7 @@ static void	ft_fill_line(char *line, int *buffer, int width, t_state *state)
 		i++;
 	}
 	while (i < width)
-		buffer[i++] = NOTHING;
+		buffer[i++] = EMPTY;
 }
 
 void	ft_fill_map(char **file_content, t_state *state)

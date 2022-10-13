@@ -68,19 +68,18 @@ t_player	find_wall_horiz(int **map, t_data *data, double ray_an)
 	count2 = 0;
 	while(1)
 	{
-		snagat = (tan(ray_an));
+		snagat = (tan(ray_an));	
 		if (sin(ray_an) > 0)
 			horiz.dy = -(data->player->y - (y - count++));
 		else
 			horiz.dy = -(data->player->y - (f1 + count2++));
-		horiz.dx = -(horiz.dy / snagat);
-		horiz.dx += data->player->x;
+		horiz.dx = -(horiz.dy / snagat) + data->player->x;
 		dx = horiz.dx;
 		horiz.dy += data->player->y;
 		dy = horiz.dy;
-		if (dx > data->state->map_width || dx < 0 || dy > data->state->map_height || dy < 0)
+		if (dx >= data->state->map_width || dx < 0 || dy >= data->state->map_height || dy < 0)
 			break ;
-		if ( (map[dy - 1][dx] == 1 || map[dy][dx] == 1))
+		if ((map[dy - 1][dx] == 1 || map[dy][dx] == 1))
 			break ;
 	}
 	return(horiz);
