@@ -59,11 +59,6 @@ int	key_hook(int key, t_data *data)
 		return (0);
 	mlx_clear_window(data->mlx, data->win);
 
-	if (!data->img)
-		exit(1);
-	data->addr = (unsigned int *)mlx_get_data_addr(data->img, &usls, &usls, &usls);
-	if (!data->addr)
-		exit(1);
 	ft_up_down_key(key, data);
 	ft_left_right_key(key, data);
  	if (key == LEFT)
