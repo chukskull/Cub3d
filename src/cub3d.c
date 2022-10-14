@@ -1,16 +1,6 @@
 #include "cub3d.h"
 #include "utils.h"
 
-double	scale(double val, double max, double range, double range2)
-{
-	double	r_1;
-	double	r_2;
-
-	r_1 = max;
-	r_2 = range - range2;
-	return (range2 + (val * (r_2 / r_1)));
-}
-
 void	get_textures(t_data *data, int dir)
 {
 	if (dir == 1)

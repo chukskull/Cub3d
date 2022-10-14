@@ -21,11 +21,11 @@ static void	ft_left_right_key(int key, t_data *data)
 
 	sign = 0;
 	if (key == A)
-		sign = 1;
-	else if (key == D)
 		sign = -1;
-	data->player->y += sin(PI - (PI/2) - data->player->an)  * 0.3 * sign;
-	data->player->x += cos(PI - (PI/2) - data->player->an)  * 0.3 * sign;
+	else if (key == D)
+		sign = 1;
+	data->player->y -= sin(PI - (PI/2) - data->player->an)  * 0.3 * sign;
+	data->player->x -= cos(PI - (PI/2) - data->player->an)  * 0.3 * sign;
 }
 
 int	key_hook(int key, t_data *data)

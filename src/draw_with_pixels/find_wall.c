@@ -31,7 +31,7 @@ t_player	find_wall(int **map, t_data *data, double ray_angle)
 	t_player	ver;
 	double	distanc_hor;
 	double	distanc_ver;
-	(void)ray_angle;
+
 	horiz = find_wall_horiz(map, data, ray_angle);
 	ver = find_wall_vert(map, data, ray_angle);
 	distanc_hor = sqrt(pow(data->player->x - horiz.dx  , 2)
@@ -52,32 +52,27 @@ t_player	find_wall(int **map, t_data *data, double ray_angle)
 
 t_player	find_wall_horiz(int **map, t_data *data, double ray_an)
 {
-	int			x;
-	int			y;
 	t_player	horiz;
 	int			count;
 	int			count2;
+	int			dy;
+	int			dx;
 
-	y = data->player->y;
-	x = data->player->x;
-	float f1 = (y + 1);
-	int	dy = data->player->y;
-	int	dx = data->player->x;
-	double	snagat;
+	dy = data->player->y;
+	dx = data->player->x;
 	count = 0;
 	count2 = 0;
 	while(1)
-	{
-		snagat = (tan(ray_an));	
+	{	
 		if (sin(ray_an) > 0)
-			horiz.dy = -(data->player->y - (y - count++));
+			horiz.dy = -(data->player->y - ((int)data->player->y - count++));
 		else
-			horiz.dy = -(data->player->y - (f1 + count2++));
-		horiz.dx = -(horiz.dy / snagat) + data->player->x;
+			horiz.dy = -(data->player->y - (((int)data->player->y  + 1) + count2++));
+		horiz.dx = -(horiz.dy / tan(ray_an)) + data->player->x;
 		dx = horiz.dx;
 		horiz.dy += data->player->y;
 		dy = horiz.dy;
-		if (dx >= data->state->map_width || dx < 0 || dy >= data->state->map_height || dy < 0)
+		if (dx >= data->state->map_width || dx <= 0 || dy >= data->state->map_height || dy <= 0)
 			break ;
 		if ((map[dy - 1][dx] == 1 || map[dy][dx] == 1))
 			break ;

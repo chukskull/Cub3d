@@ -55,9 +55,16 @@ void    draw_player(t_data *data, int x, int y, int color)
 	j = 0;
 	(void)x;
 	(void)y;
-	data->player->an = M_PI / 2;
-	data->player->x = x;
-	data->player->y = y;
+	if (data->state->player_angle == 'N')
+		data->player->an =  M_PI_2;
+	else if (data->state->player_angle == 'S')
+		data->player->an = 3 * M_PI / 2;
+	else if (data->state->player_angle == 'W')
+		data->player->an = M_PI;
+	else if (data->state->player_angle == 'E')
+		data->player->an = 0;
+	data->player->x = x + 0.1;
+	data->player->y = y + 0.1;
 	while(i < 3)
 	{
 		j = 0;
