@@ -58,8 +58,8 @@ void	draw_map_p(t_data *data, int init)
 						data->player->an = M_PI;
 					else if (data->state->player_angle == 'E')
 						data->player->an = 0;
-					data->player->x = c;
-					data->player->y = r;
+					data->player->x = c + 0.1;
+					data->player->y = r + 0.1;
 				}
 			c++;
 		}

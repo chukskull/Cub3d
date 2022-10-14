@@ -70,6 +70,7 @@ typedef	struct s_texture
 
 typedef struct s_data
 {
+	int			flagb3d;
 	int			usls;
 	unsigned int	*addr;
 	void		*mlx;

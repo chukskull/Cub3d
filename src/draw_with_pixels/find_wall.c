@@ -7,6 +7,8 @@ t_player	find_wall(int **map, t_data *data, double ray_angle)
 	double	distanc_hor;
 	double	distanc_ver;
 
+	data->flagb3d = 0;
+
 	horiz = find_wall_horiz(map, data, ray_angle);
 	ver = find_wall_vert(map, data, ray_angle);
 	distanc_hor = sqrt(pow(data->player->x - horiz.dx  , 2)
@@ -15,11 +17,15 @@ t_player	find_wall(int **map, t_data *data, double ray_angle)
 	+ pow(data->player->y - ver.dy, 2));
 	if (distanc_hor < distanc_ver  || ver.flag == 1)
 	{
+		if (distanc_hor == 0)
+			data->flagb3d = 1;
 		horiz.zone = 1;
 		return(horiz);
 	}
 	else
 	{
+		if (distanc_ver == 0)
+			data->flagb3d = 1;
 		horiz.zone = 2;
 		return(ver);
 	}
