@@ -63,8 +63,8 @@ void    draw_player(t_data *data, int x, int y, int color)
 		data->player->an = M_PI;
 	else if (data->state->player_angle == 'E')
 		data->player->an = 0;
-	data->player->x = x + 0.1;
-	data->player->y = y + 0.1;
+	data->player->x = x;
+	data->player->y = y;
 	while(i < 3)
 	{
 		j = 0;

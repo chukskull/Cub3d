@@ -41,8 +41,6 @@ void initial(t_data *data)
 	i = 1;
 	data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "cub3d");
-	data->img = mlx_new_image(data->mlx, SQUARE_M, SQUARE_M);
-	data->addr = (unsigned int *)mlx_get_data_addr(data->img, &data->usls, &data->usls, &data->usls);
 	data->texture = malloc(sizeof(t_texture));
 	ft_memset((void *) data->texture, 0, sizeof(t_texture));
 	while (i < 5)

@@ -49,16 +49,23 @@ void	draw_map_p(t_data *data, int init)
 		while(c < data->state->map_width)
 		{
 			if (data->state->map[r][c] == PLAYER && init == 1)
-				draw_player(data, c,r, 0x00ff0000);
-			else if (init == 0)
-				draw_p(data, 0x00ff0000);
+				{
+					if (data->state->player_angle == 'N')
+						data->player->an =  M_PI_2;
+					else if (data->state->player_angle == 'S')
+						data->player->an = 3 * M_PI / 2;
+					else if (data->state->player_angle == 'W')
+						data->player->an = M_PI;
+					else if (data->state->player_angle == 'E')
+						data->player->an = 0;
+					data->player->x = c;
+					data->player->y = r;
+				}
 			c++;
 		}
 		r++;
 	}
 	draw_everything(data, data->state->map, &wall);
 	mlx_put_image_to_window(data->mlx, data->win, wall.img, 0, 0);
-	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	mlx_destroy_image(data->mlx, wall.img);
-	mlx_destroy_image(data->mlx, data->img);
 }
