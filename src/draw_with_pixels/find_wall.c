@@ -1,30 +1,5 @@
 #include "cub3d.h"
 
-
-
-// double  find_wall_y(int **map, t_data *data)
-// {
-// 	int	x;
-// 	int y;
-// 	double	d;
-// 	// int		p;
-// 	(void)map;
-// 	y = data->player->y ;
-// 	x = data->player->x;
-// 	printf("x ->[%d] y->[%d] \n", x, y);
-	
-
-// 	d = 0;
-// 	while(1)
-// 	{
-// 		if (map[y][x] == 1)
-// 			return(y);
-// 		y += sin(data->player->an);
-// 		x -= cos(data->player->an);
-// 	}
-// 	return(y);
-// }
-
 t_player	find_wall(int **map, t_data *data, double ray_angle)
 {
 	t_player	horiz;
@@ -96,13 +71,9 @@ t_player	find_wall_vert(int **map, t_data *data, double ray_an)
 	while(1)
 	{
 		if (cos(ray_an) > 0)
-		{
 			ver.dx = -(data->player->x - ((int)data->player->x + count++));
-		}
 		else if (cos(ray_an) < 0)
-		{
 			ver.dx = -(data->player->x - ((int)data->player->x - count2++));
-		}
 		ver.dy = -(ver.dx * (tan(ray_an)));
 		ver.dx += data->player->x;
 		ver.dy += data->player->y;
