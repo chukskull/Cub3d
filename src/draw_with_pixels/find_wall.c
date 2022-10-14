@@ -82,27 +82,26 @@ t_player	find_wall_horiz(int **map, t_data *data, double ray_an)
 
 t_player	find_wall_vert(int **map, t_data *data, double ray_an)
 {
-	int	x;
-	int y;
 	t_player	ver;
-	int	count;
-	int	count2;
-	y = data->player->y;
-	x = data->player->x;
+	int			count;
+	int			count2;
+	int			dx;
+	int			dy;
+
+	dx = data->player->x;
+	dy = data->player->y;
 	ver.flag = 0;
-	int	dx = x;
-	int dy = y;
 	count = 1;
 	count2 = 0;
 	while(1)
 	{
 		if (cos(ray_an) > 0)
 		{
-			ver.dx = -(data->player->x - (x + count++));
+			ver.dx = -(data->player->x - ((int)data->player->x + count++));
 		}
 		else if (cos(ray_an) < 0)
 		{
-			ver.dx = -(data->player->x - (x - count2++));
+			ver.dx = -(data->player->x - ((int)data->player->x - count2++));
 		}
 		ver.dy = -(ver.dx * (tan(ray_an)));
 		ver.dx += data->player->x;
