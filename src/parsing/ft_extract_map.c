@@ -6,7 +6,7 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:40:39 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/15 21:13:07 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/15 21:17:32 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,19 @@ static int	ft_invalid_map_line(char **file_content, int line_index)
 	return (0);
 }
 
+static int	ft_check_correct_map2(char **file_content, int *i, int *reached_end)
+{
+	if (ft_strlen(file_content[*i]) == 0)
+	{
+		*reached_end = 1;
+		(*i)++;
+		return (1);
+	}
+	else if (*reached_end || ft_invalid_map_line(file_content, *i))
+		ft_exit_error("Error", EXIT_FAILURE);
+	return (0);
+}
+
 static int	ft_check_correct_map(char **file_content, int lines_len)
 {
 	int	i;
@@ -60,14 +73,8 @@ static int	ft_check_correct_map(char **file_content, int lines_len)
 	reached_end = 0;
 	while (i < lines_len)
 	{
-		if (ft_strlen(file_content[i]) == 0)
-		{
-			reached_end = 1;
-			i++;
+		if (ft_check_correct_map2(file_content, &i, &reached_end))
 			continue ;
-		}
-		else if (reached_end || ft_invalid_map_line(file_content, i))
-			ft_exit_error("Error", EXIT_FAILURE);
 		if (ft_found_player(file_content[i]))
 		{
 			if (player_found)
