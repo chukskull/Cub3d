@@ -73,7 +73,7 @@ int	key_hook(int key, t_data *data)
 		if (data->player->an > M_PI * 2)
 			data->player->an -= M_PI *2;
 	}
-	draw_map_p(data, 0);
+	draw_map_p(data, 0, -1, -1);
 	return(0);
 }
 
