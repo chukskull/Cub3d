@@ -101,7 +101,7 @@ void		fill_pixel(t_data *data, int x, int y, int color);
 void		draw_square(t_data *data, int x, int y, int color);
 void		draw_player(t_data *data, int x, int y, int color);
 int			render_for_p(t_data *data);
-void   		draw_map_p(t_data *data, int init);
+void   		draw_map_p(t_data *data, int init, int r, int c);
 int			key_hook(int key, t_data *data);
 void   		draw_line(t_data *data, double Bx, double By, double Ex, double Ey);
 t_player	find_wall_horiz(int **map, t_data *data,  double ray_angle);

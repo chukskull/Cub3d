@@ -21,49 +21,29 @@ void	draw_p(t_data *data, int color)
     }
 }
 
-void	draw_map_p(t_data *data, int init)
+void	draw_map_p(t_data *data, int init, int r, int c)
 {
-	int	r;
-	int	c;
 	t_data	wall;
 
-	r = 0;
-	c = 0;
-	// while(r < data->state->map_height)
-	// {
-	// 	c = 0;
-	// 	while(c < data->state->map_width)
-	// 	{
-	// 		if (data->state->map[r][c] == WALL)
-	// 			draw_square(data, c, r, 0x0074af51);
-	// 		else if (data->state->map[r][c] == EMPTY || data->state->map[r][c] == PLAYER)
-	// 			draw_square(data, c, r, 0x00e5dad5);
-	// 		c++;
-	// 	}
-	// 	r++;
-	// }
-	r = 0;
-	while(r < data->state->map_height)
+	while(++r < data->state->map_height)
 	{
-		c = 0;
-		while(c < data->state->map_width)
+		c = -1;
+		while(++c < data->state->map_width)
 		{
 			if (data->state->map[r][c] == PLAYER && init == 1)
-				{
-					if (data->state->player_angle == 'N')
-						data->player->an =  M_PI_2;
-					else if (data->state->player_angle == 'S')
-						data->player->an = 3 * M_PI / 2;
-					else if (data->state->player_angle == 'W')
-						data->player->an = M_PI;
-					else if (data->state->player_angle == 'E')
-						data->player->an = 0;
-					data->player->x = c + 0.1;
-					data->player->y = r + 0.1;
-				}
-			c++;
+			{
+				if (data->state->player_angle == 'N')
+					data->player->an =  M_PI_2;
+				else if (data->state->player_angle == 'S')
+					data->player->an = 3 * M_PI / 2;
+				else if (data->state->player_angle == 'W')
+					data->player->an = M_PI;
+				else if (data->state->player_angle == 'E')
+					data->player->an = 0;
+				data->player->x = c + 0.1;
+				data->player->y = r + 0.1;
+			}
 		}
-		r++;
 	}
 	draw_everything(data, data->state->map, &wall);
 	mlx_put_image_to_window(data->mlx, data->win, wall.img, 0, 0);

@@ -6,7 +6,7 @@
 /*   By: snagat <snagat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 21:11:40 by snagat            #+#    #+#             */
-/*   Updated: 2022/10/15 21:30:05 by snagat           ###   ########.fr       */
+/*   Updated: 2022/10/15 21:47:40 by snagat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	initial(t_data *data)
 		get_textures(data, i);
 		i++;
 	}
-	draw_map_p(data, 1);
+	draw_map_p(data, 1, -1, -1);
 	mlx_hook(data->win, 02, 1L << 0, key_hook, data);
 	mlx_loop(data->mlx);
 }

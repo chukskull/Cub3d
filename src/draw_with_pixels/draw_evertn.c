@@ -16,10 +16,6 @@ void	draw_everything(t_data *data, int **map, t_data *wall)
 			if (ray.an > 2 * M_PI)
 				ray.an -= 2 * M_PI;
 			delta = find_wall(map, data, ray.an);
-			// draw_line(data, (SIZE) * data->player->x, 
-			// 	(SIZE) * data->player->y,
-			// 	  delta.dx * (SIZE),
-			// 	  delta.dy * (SIZE));
 			draw_walls(wall , delta, data, &ray); 
 			ray.x += 59.0 / WIDTH;
 		}
