@@ -6,7 +6,7 @@
 /*   By: snagat <snagat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 14:55:54 by olabrahm          #+#    #+#             */
-/*   Updated: 2022/10/14 17:04:51 by snagat           ###   ########.fr       */
+/*   Updated: 2022/10/15 20:53:16 by snagat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	ft_fill_line(char *line, int *buffer, int width, t_state *state)
 		else if (line[i] == '1')
 			buffer[i] = WALL;
 		else if (line[i] == ' ')
-			buffer[i] = WALL;
+			buffer[i] = NOTHING;
 		else if (ft_char_is_player(line[i]))
 		{
 			buffer[i] = PLAYER;
@@ -35,7 +35,7 @@ static void	ft_fill_line(char *line, int *buffer, int width, t_state *state)
 		i++;
 	}
 	while (i < width)
-		buffer[i++] = WALL;
+		buffer[i++] = NOTHING;
 }
 
 void	ft_fill_map(char **file_content, t_state *state)
