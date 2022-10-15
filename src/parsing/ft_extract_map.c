@@ -6,7 +6,7 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:40:39 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/12 19:39:17 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/15 21:13:07 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,18 +86,7 @@ void	ft_extract_map(char **file_content, int lines_len, t_state *state)
 	if (!file_content || !file_content[0] || lines_len <= 1)
 		ft_exit_error("Error", EXIT_FAILURE);
 	ft_check_correct_map(file_content, lines_len);
-	printf("map is valid\n");
 	state->map_width = ft_get_map_width(file_content, lines_len);
 	state->map_height = lines_len;
-	printf("map width: %d, map height: %d\n",
-		state->map_width, state->map_height);
 	ft_fill_map(file_content, state);
-	ft_print_map(state);
-	printf("player is looking at: %c\n", state->player_angle);
-	printf("north	texture: |%s|\n", state->north_texture);
-	printf("south	texture: |%s|\n", state->south_texture);
-	printf("east	texture: |%s|\n", state->east_texture);
-	printf("west	texture: |%s|\n", state->west_texture);
-	printf("floor	color: |%d|\n", state->floor_color);
-	printf("ceiling	color: |%d|\n", state->ceiling_color);
 }

@@ -57,6 +57,7 @@ void initial(t_data *data)
 	}
 	draw_map_p(data, 1);
 	mlx_hook(data->win, 02, 1L<<0, key_hook, data);
+	mlx_hook(data->win, 17, 0, ft_exit, NULL);
 	mlx_loop(data->mlx);
 }
 

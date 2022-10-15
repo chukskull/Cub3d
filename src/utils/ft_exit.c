@@ -1,45 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map_resolution.c                                :+:      :+:    :+:   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/11 22:15:38 by olabrahm          #+#    #+#             */
-/*   Updated: 2022/10/15 21:12:57 by olabrahm         ###   ########.fr       */
+/*   Created: 2022/10/15 21:09:47 by olabrahm          #+#    #+#             */
+/*   Updated: 2022/10/15 21:11:27 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_found_player(char *line)
+int	ft_exit(void)
 {
-	int	i;
-
-	i = 0;
-	while (line[i])
-	{
-		if (ft_char_is_player(line[i]))
-			return (1);
-		i++;
-	}
+	exit(0);
 	return (0);
-}
-
-int	ft_get_map_width(char **file_content, int lines_len)
-{
-	int	i;
-	int	max;
-	int	line_len;
-
-	i = 0;
-	max = 0;
-	while (i < lines_len)
-	{
-		line_len = ft_strlen(file_content[i]);
-		if (line_len > max)
-			max = line_len;
-		i++;
-	}
-	return (max);
 }
