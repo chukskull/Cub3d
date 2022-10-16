@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: snagat <snagat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 09:49:11 by olabrahm          #+#    #+#             */
-/*   Updated: 2022/10/16 09:51:29 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/16 10:05:34 by snagat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_texture(t_data *wall, int x, int y, t_data *data, t_player delta,
 	{
 		pos_wallstr = delta.dx * width;
 		xox = pos_wallstr % width;
-		fill_pixel(wall, x, y, test_pixel(xox, h, width, addr));
+		fill_pixel(wall, x, y, grab_pixel(xox, h, width, addr));
 	}
 	else
 	{
@@ -30,6 +30,6 @@ void	ft_texture(t_data *wall, int x, int y, t_data *data, t_player delta,
 		xox = pos_wallstr % width;
 		if (h == data->texture->ea_height)
 			h = data->texture->ea_height - 1;
-		fill_pixel(wall, x, y, test_pixel(xox, h, width, addr));
+		fill_pixel(wall, x, y, grab_pixel(xox, h, width, addr));
 	}
 }

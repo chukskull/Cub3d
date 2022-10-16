@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: snagat <snagat@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/16 09:59:21 by snagat            #+#    #+#             */
+/*   Updated: 2022/10/16 09:59:59 by snagat           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 #include "utils.h"
 
@@ -5,15 +17,15 @@ void	draw_map_p(t_data *data, int init, int r, int c)
 {
 	t_data	wall;
 
-	while(++r < data->state->map_height)
+	while (++r < data->state->map_height)
 	{
 		c = -1;
-		while(++c < data->state->map_width)
+		while (++c < data->state->map_width)
 		{
 			if (data->state->map[r][c] == PLAYER && init == 1)
 			{
 				if (data->state->player_angle == 'N')
-					data->player->an =  M_PI_2;
+					data->player->an = M_PI_2;
 				else if (data->state->player_angle == 'S')
 					data->player->an = 3 * M_PI / 2;
 				else if (data->state->player_angle == 'W')

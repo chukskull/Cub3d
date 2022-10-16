@@ -70,7 +70,6 @@ typedef	struct s_texture
 
 typedef struct s_data
 {
-	int			flagb3d;
 	int			usls;
 	unsigned int	*addr;
 	void		*mlx;
@@ -96,7 +95,7 @@ typedef	struct s_wall
 } t_wall;
 
 
-int			test_pixel(int x, int y, int width, unsigned int *addr);
+int			grab_pixel(int x, int y, int width, unsigned int *addr);
 void		fill_pixel(t_data *data, int x, int y, int color);
 int			render_for_p(t_data *data);
 void   		draw_map_p(t_data *data, int init, int r, int c);
