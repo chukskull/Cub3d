@@ -98,20 +98,15 @@ typedef	struct s_wall
 
 int			test_pixel(int x, int y, int width, unsigned int *addr);
 void		fill_pixel(t_data *data, int x, int y, int color);
-void		draw_square(t_data *data, int x, int y, int color);
-void		draw_player(t_data *data, int x, int y, int color);
 int			render_for_p(t_data *data);
 void   		draw_map_p(t_data *data, int init, int r, int c);
 int			key_hook(int key, t_data *data);
-void   		draw_line(t_data *data, double Bx, double By, double Ex, double Ey);
 t_player	find_wall_horiz(int **map, t_data *data,  double ray_angle);
 t_player	find_wall_vert(int **map, t_data *data,  double ray_angle);
 t_player	find_wall(int **map, t_data *data, double ray_angle);
-void    	fill_pixel_2(t_data *data, int x, int y, int color);
 void    	ft_texture(t_data *wall, int x, int y, t_data *data, t_player delta, int h, int	width, unsigned int *addr);
 void		draw_everything(t_data *data, int **map, t_data *wall);
 void		draw_walls(t_data *wall,t_player delta,t_data *data, t_ray *ray);
-double		scale(double val, double max, double range, double range2);
 
 
 
