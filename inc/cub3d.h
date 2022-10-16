@@ -64,15 +64,31 @@ typedef	struct s_texture
 	int				west_height;
 	int				sou_width;
 	int				sou_height;
-}t_texture;
+}	t_texture;
 
 typedef	struct s_wall
 {
 	double	wall_h;
 	int		top_y;
 	int		bottom_y;
-} t_wall;
+}	t_wall;
 
+typedef struct s_tex
+{
+	int				tab[2];
+	int				y_so;
+	int				y_no;
+	int				y_we;
+	int				y_ea;
+	int				wdt_no;
+	int				wdt_so;
+	int				wdt_we;
+	int				wdt_ea;
+	unsigned int	*addr_no;
+	unsigned int	*addr_so;
+	unsigned int	*addr_we;
+	unsigned int	*addr_ea;
+}	t_tex;
 
 typedef struct s_data
 {
@@ -106,6 +122,10 @@ t_player	find_wall_vert(int **map, t_data *data,  double ray_angle);
 t_player	find_wall(int **map, t_data *data, double ray_angle);
 void		draw_everything(t_data *data, int **map);
 void		draw_walls(t_player delta,t_data *data, t_ray *ray);
+void		ft_texture_no(t_data *data, t_player *delta, t_tex *tex);
+void		ft_texture_so(t_data *data, t_player *delta, t_tex *tex);
+void		ft_texture_ea(t_data *data, t_player *delta, t_tex *tex);
+void		ft_texture_we(t_data *data, t_player *delta, t_tex *tex);
 
 
 

@@ -3,110 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   draw_walls.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snagat <snagat@student.42.fr>              +#+  +:+       +#+        */
+/*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 11:17:45 by snagat            #+#    #+#             */
-/*   Updated: 2022/10/16 12:09:00 by snagat           ###   ########.fr       */
+/*   Updated: 2022/10/16 12:19:23 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "cub3d.h"
 #include "utils.h"
 
 
-typedef struct s_tex
-{
-	int				tab[2];
-	int				y_so;
-	int				y_no;
-	int				y_we;
-	int				y_ea;
-	int				wdt_no;
-	int				wdt_so;
-	int				wdt_we;
-	int				wdt_ea;
-	unsigned int	*addr_no;
-	unsigned int	*addr_so;
-	unsigned int	*addr_we;
-	unsigned int	*addr_ea;
-
-
-} t_tex;
-
 void	ft_texture(t_tex *tex, int flag, t_data *data, t_player *delta)
 {
-	int	pos_wallstr;
-	int	xox;
-
 	if (flag == 1)
-	{
-		if (delta->zone == 1)
-		{
-			pos_wallstr = delta->dx * tex->wdt_no;
-			xox = pos_wallstr % tex->wdt_no;
-			fill_pixel(data, tex->tab[0], tex->tab[1], grab_pixel(xox, tex->y_no, tex->wdt_no, tex->addr_no));
-		}
-		else
-		{
-			pos_wallstr = delta->dy * tex->wdt_no;
-			xox = pos_wallstr % tex->wdt_no;
-			if (tex->y_no == data->texture->ea_height)
-				tex->y_no = data->texture->ea_height - 1;
-			fill_pixel(data, tex->tab[0], tex->tab[1], grab_pixel(xox, tex->y_no, tex->wdt_no, tex->addr_no));
-		}
-	}
-	if (flag == 2)
-	{
-		if (delta->zone == 1)
-		{
-			pos_wallstr = delta->dx * tex->wdt_so;
-			xox = pos_wallstr % tex->wdt_so;
-			fill_pixel(data, tex->tab[0], tex->tab[1], grab_pixel(xox, tex->y_so, tex->wdt_so, tex->addr_so));
-		}
-		else
-		{
-			pos_wallstr = delta->dy * tex->wdt_so;
-			xox = pos_wallstr % tex->wdt_so;
-			if (tex->y_so == data->texture->ea_height)
-				tex->y_so = data->texture->ea_height - 1;
-			fill_pixel(data, tex->tab[0], tex->tab[1], grab_pixel(xox, tex->y_so, tex->wdt_so, tex->addr_so));
-		}
-	}
-	if (flag == 3)
-	{
-		if (delta->zone == 1)
-		{
-			pos_wallstr = delta->dx * tex->wdt_ea;
-			xox = pos_wallstr % tex->wdt_ea;
-			fill_pixel(data, tex->tab[0], tex->tab[1], grab_pixel(xox, tex->y_ea, tex->wdt_ea, tex->addr_ea));
-		}
-		else
-		{
-			pos_wallstr = delta->dy * tex->wdt_ea;
-			xox = pos_wallstr % tex->wdt_ea;
-			if (tex->y_ea == data->texture->ea_height)
-				tex->y_ea = data->texture->ea_height - 1;
-			fill_pixel(data, tex->tab[0], tex->tab[1], grab_pixel(xox, tex->y_ea, tex->wdt_ea, tex->addr_ea));
-		}
-	}
-	if (flag == 4)
-	{
-		if (delta->zone == 1)
-		{
-			pos_wallstr = delta->dx * tex->wdt_we;
-			xox = pos_wallstr % tex->wdt_we;
-			fill_pixel(data, tex->tab[0], tex->tab[1], grab_pixel(xox, tex->y_we, tex->wdt_we, tex->addr_we));
-		}
-		else
-		{
-			pos_wallstr = delta->dy * tex->wdt_we;
-			xox = pos_wallstr % tex->wdt_we;
-			if (tex->y_we == data->texture->ea_height)
-				tex->y_we = data->texture->ea_height - 1;
-			fill_pixel(data, tex->tab[0], tex->tab[1], grab_pixel(xox, tex->y_we, tex->wdt_we, tex->addr_we));
-		}
-	}
+		ft_texture_no(data, delta, tex);
+	else if (flag == 2)
+		ft_texture_so(data, delta, tex);
+	else if (flag == 3)
+		ft_texture_ea(data, delta, tex);
+	else if (flag == 4)
+		ft_texture_we(data, delta, tex);
 }
 
 static void	initial_texture(t_tex *cor, t_ray *ray,t_data *data, double x_w)
