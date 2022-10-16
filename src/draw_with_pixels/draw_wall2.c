@@ -6,7 +6,7 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 12:13:29 by olabrahm          #+#    #+#             */
-/*   Updated: 2022/10/16 12:20:47 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/16 12:31:40 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,3 +103,5 @@ void	ft_texture_we(t_data *data, t_player *delta, t_tex *tex)
 				tex->wdt_we, tex->addr_we));
 	}
 }
+
+void
