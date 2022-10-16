@@ -1,10 +1,10 @@
-NO src/images/zlijfassi.xpm
-SO src/images/kozina_2_.xpm
-WE src/images/zlijcasa.xpm
-EA src/images/zlpop.xpm
+NO images/zlijcasa.xpm
+SO images/zlijfassi.xpm
+WE images/zlpop.xpm
+EA images/kozina_1_.xpm
 
-C      169,169,169
-F      112,128,144
+C      0,0,0
+F      255,255,255
 
 1111111111111111
 100000100000001
