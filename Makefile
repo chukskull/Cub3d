@@ -21,6 +21,8 @@ LIBFT_DIR=libft
 LIBFT=$(LIBFT_DIR)/libft.a
 
 INCLUDE= -I./inc -I./libft
+INCLUDES=cub3d.h get_next_line.h parse.h texture.h utils.h
+INCLUDES_FILES=$(addprefix ./inc/, $(INCLUDES)) 
 
 .PHONY = all re clean fclean
 
@@ -28,18 +30,18 @@ RM=rm -rf
 
 OBJ=$(addprefix $(B_DIR)/, $(FILES:=.o))
 
-all : $(NAME)
+all: $(NAME)
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)
 
-$(NAME) : $(OBJ) $(LIBFT)
+$(NAME): $(OBJ) $(LIBFT) $(INCLUDES_FILES)
 	$(CC) $(OBJ)  -Ofast -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(LIBFT)
 
 
-$(B_DIR)/%.o: src/%.c
+$(B_DIR)/%.o: src/%.c $(INCLUDES_FILES)
 	mkdir -p $(@D)
-	$(CC)  $(INCLUDE) $(FLAGS) -Imlx -c $? -o $@
+	$(CC) $(INCLUDE) $(FLAGS) -Imlx -c $< -o $@
 
 clean:
 	$(RM) $(B_DIR)

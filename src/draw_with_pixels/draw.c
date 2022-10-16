@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snagat <snagat@student.42.fr>              +#+  +:+       +#+        */
+/*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 09:59:21 by snagat            #+#    #+#             */
-/*   Updated: 2022/10/16 11:13:16 by snagat           ###   ########.fr       */
+/*   Updated: 2022/10/16 13:29:40 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	draw_map_p(t_data *data, int init, int r, int c)
 					data->player->an = M_PI;
 				else if (data->state->player_angle == 'E')
 					data->player->an = 0;
-				data->player->x = c + 0.1;
-				data->player->y = r + 0.1;
+				data->player->x = c + 0.2;
+				data->player->y = r + 0.2;
 			}
 		}
 	}

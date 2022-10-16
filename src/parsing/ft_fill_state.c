@@ -6,7 +6,7 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:36:10 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/13 14:56:45 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/16 13:01:48 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,6 @@ static void	ft_empty_state(t_state *state)
 	state->map_height = -1;
 	state->map = NULL;
 	state->player_angle = 0;
-}
-
-void	ft_print_lines(char **lines)
-{
-	int	i;
-
-	i = 0;
-	printf("0-----------------------------\n");
-	while (lines[i])
-	{
-		printf("%s\n", lines[i]);
-		i++;
-	}
-	printf("0-----------------------------\n");
 }
 
 void	ft_fill_state(char *file_content, t_state *state)

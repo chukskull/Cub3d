@@ -6,7 +6,7 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 12:36:21 by olabrahm          #+#    #+#             */
-/*   Updated: 2022/10/16 12:38:42 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/16 13:14:37 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@
 # define W 13
 # define S 1
 # define D 2
-# define SIZE 11
 # define SQUARE_M 200
 # define LEFT 124
 
