@@ -6,7 +6,7 @@
 /*   By: snagat <snagat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 09:59:21 by snagat            #+#    #+#             */
-/*   Updated: 2022/10/16 09:59:59 by snagat           ###   ########.fr       */
+/*   Updated: 2022/10/16 11:13:16 by snagat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 void	draw_map_p(t_data *data, int init, int r, int c)
 {
-	t_data	wall;
-
 	while (++r < data->state->map_height)
 	{
 		c = -1;
@@ -37,7 +35,7 @@ void	draw_map_p(t_data *data, int init, int r, int c)
 			}
 		}
 	}
-	draw_everything(data, data->state->map, &wall);
-	mlx_put_image_to_window(data->mlx, data->win, wall.img, 0, 0);
-	mlx_destroy_image(data->mlx, wall.img);
+	draw_everything(data, data->state->map);
+	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+	mlx_destroy_image(data->mlx, data->img);
 }

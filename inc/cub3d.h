@@ -66,6 +66,12 @@ typedef	struct s_texture
 	int				sou_height;
 }t_texture;
 
+typedef	struct s_wall
+{
+	double	wall_h;
+	int		top_y;
+	int		bottom_y;
+} t_wall;
 
 
 typedef struct s_data
@@ -75,6 +81,7 @@ typedef struct s_data
 	void		*mlx;
 	void		*img;
 	void		*win;
+	t_wall		*wall;
 	t_player	*player;	
 	t_texture	*texture;
 	t_state	*state;
@@ -87,12 +94,6 @@ typedef struct s_ray
 	int		y;
 } t_ray;
 
-typedef	struct s_wall
-{
-	double	wall_h;
-	int		top_y;
-	int		bottom_y;
-} t_wall;
 
 
 int			grab_pixel(int x, int y, int width, unsigned int *addr);
@@ -103,9 +104,8 @@ int			key_hook(int key, t_data *data);
 t_player	find_wall_horiz(int **map, t_data *data,  double ray_angle);
 t_player	find_wall_vert(int **map, t_data *data,  double ray_angle);
 t_player	find_wall(int **map, t_data *data, double ray_angle);
-void    	ft_texture(t_data *wall, int x, int y, t_data *data, t_player delta, int h, int	width, unsigned int *addr);
-void		draw_everything(t_data *data, int **map, t_data *wall);
-void		draw_walls(t_data *wall,t_player delta,t_data *data, t_ray *ray);
+void		draw_everything(t_data *data, int **map);
+void		draw_walls(t_player delta,t_data *data, t_ray *ray);
 
 
 
