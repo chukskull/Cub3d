@@ -11,7 +11,7 @@ typedef struct s_text_no
 	void			*img_north;
 	int				no_width;
 	int				no_height;
-} t_text_no;
+}	t_text_no;
 
 typedef struct s_text_so
 {
@@ -19,7 +19,7 @@ typedef struct s_text_so
 	void			*img_south;
 	int				so_width;
 	int				so_height;
-} t_text_so;
+}	t_text_so;
 
 typedef struct s_text_we
 {
@@ -27,7 +27,7 @@ typedef struct s_text_we
 	void			*img_west;
 	int				we_width;
 	int				we_height;
-} t_text_we;
+}	t_text_we;
 
 typedef struct s_text_ea
 {
@@ -35,7 +35,7 @@ typedef struct s_text_ea
 	void			*img_east;
 	int				ea_width;
 	int				ea_height;
-} t_text_ea;
+}	t_text_ea;
 
 typedef	struct s_texture
 {

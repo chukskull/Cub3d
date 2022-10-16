@@ -13,7 +13,7 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-int	    ft_strchr_gnl(const char *s, int c);
+int		ft_strchr_gnl(const char *s, int c);
 char	*ft_strncpy(char *dst, char *src, int n);
 char	*ft_cut_line(char **content_ptr, char *line);
 char	*ft_first_line(char **content_ptr);
