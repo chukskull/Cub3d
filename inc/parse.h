@@ -6,12 +6,12 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:09:34 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/16 09:44:19 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/16 12:40:43 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_H
-#define PARSE_H
+# define PARSE_H
 
 # include "cub3d.h"
 # include "get_next_line.h"
@@ -29,18 +29,20 @@ typedef struct s_state {
 	int		map_height;
 	int		**map;
 
-	char	player_angle; // N, S, E, W
+	char	player_angle;
 }	t_state;
 
 t_state	*ft_parse(int ac, char **av);
 void	ft_exit_error(char *error, int status);
 char	*ft_parse_file(char *filename);
-int		ft_extract_textures_colors(char **lines, int lines_count, t_state *state);
+int		ft_extract_textures_colors(char **lines, int lines_count,
+			t_state *state);
 char	*ft_get_first_word(char *str);
 void	ft_extract_texture(char *line, char *type, t_state *state);
 void	ft_fill_state(char *file_content, t_state *state);
 void	ft_extract_map(char **file_content, int lines_len, t_state *state);
-int		ft_invalid_surroundings(char **file_content, int line_idx, int char_idx);
+int		ft_invalid_surroundings(char **file_content, int line_idx,
+			int char_idx);
 int		ft_char_is_player(char c);
 int		ft_get_map_width(char **file_content, int lines_len);
 int		ft_found_player(char *line);

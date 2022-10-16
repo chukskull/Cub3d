@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/16 12:36:21 by olabrahm          #+#    #+#             */
+/*   Updated: 2022/10/16 12:38:42 by olabrahm         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef CUB3D_H
-#define CUB3D_H
+# define CUB3D_H
 
 # include <mlx.h>
 # include <stdlib.h>
@@ -19,18 +30,17 @@
 # define W 13
 # define S 1
 # define D 2
-# define SIZE (200 / 18)
+# define SIZE 11
 # define SQUARE_M 200
 # define LEFT 124
 
-// int	 **map is filled with these
 # define NOTHING -1
 # define EMPTY 0
 # define WALL 1
 # define PLAYER 2
 
 # define RIGHT 123
- 
+
 typedef struct s_player
 {
 	int		zone;
@@ -42,16 +52,15 @@ typedef struct s_player
 	int		flag;
 }	t_player;
 
-
-typedef	struct s_texture
+typedef struct s_texture
 {
 	char			*dire;
 	int				height;
 	int				width;
-	unsigned int 	*addr_south;
-	unsigned int 	*addr_west;
-	unsigned int 	*addr_east;
-	unsigned int 	*addr_north;
+	unsigned int	*addr_south;
+	unsigned int	*addr_west;
+	unsigned int	*addr_east;
+	unsigned int	*addr_north;
 	void			*img_north;
 	void			*img_south;
 	void			*img_west;
@@ -64,55 +73,69 @@ typedef	struct s_texture
 	int				west_height;
 	int				sou_width;
 	int				sou_height;
-}t_texture;
+}	t_texture;
 
-typedef	struct s_wall
+typedef struct s_wall
 {
 	double	wall_h;
 	int		top_y;
 	int		bottom_y;
-} t_wall;
+}	t_wall;
 
+typedef struct s_tex
+{
+	int				tab[2];
+	int				y_so;
+	int				y_no;
+	int				y_we;
+	int				y_ea;
+	int				wdt_no;
+	int				wdt_so;
+	int				wdt_we;
+	int				wdt_ea;
+	unsigned int	*addr_no;
+	unsigned int	*addr_so;
+	unsigned int	*addr_we;
+	unsigned int	*addr_ea;
+}	t_tex;
 
 typedef struct s_data
 {
-	int			usls;
+	int				usls;
 	unsigned int	*addr;
-	void		*mlx;
-	void		*img;
-	void		*win;
-	t_wall		*wall;
-	t_player	*player;	
-	t_texture	*texture;
-	t_state	*state;
-} t_data;
+	void			*mlx;
+	void			*img;
+	void			*win;
+	t_wall			*wall;
+	t_player		*player;	
+	t_texture		*texture;
+	t_state			*state;
+}	t_data;
 
 typedef struct s_ray
 {
 	double	an;
 	double	x;
 	int		y;
-} t_ray;
-
-
+}	t_ray;
 
 int			grab_pixel(int x, int y, int width, unsigned int *addr);
 void		fill_pixel(t_data *data, int x, int y, int color);
 int			render_for_p(t_data *data);
-void   		draw_map_p(t_data *data, int init, int r, int c);
+void		draw_map_p(t_data *data, int init, int r, int c);
 int			key_hook(int key, t_data *data);
-t_player	find_wall_horiz(int **map, t_data *data,  double ray_angle);
-t_player	find_wall_vert(int **map, t_data *data,  double ray_angle);
+t_player	find_wall_horiz(int **map, t_data *data, double ray_angle);
+t_player	find_wall_vert(int **map, t_data *data, double ray_angle);
 t_player	find_wall(int **map, t_data *data, double ray_angle);
 void		draw_everything(t_data *data, int **map);
-void		draw_walls(t_player delta,t_data *data, t_ray *ray);
-
-
-
-//// utils
-double  g_player_y(t_data *data);
-double  g_player_x(t_data *data);
-double  g_player_dx(t_data *data);
-double  g_player_dy(t_data *data);
+void		draw_walls(t_player delta, t_data *data, t_ray *ray);
+void		ft_texture_no(t_data *data, t_player *delta, t_tex *tex);
+void		ft_texture_so(t_data *data, t_player *delta, t_tex *tex);
+void		ft_texture_ea(t_data *data, t_player *delta, t_tex *tex);
+void		ft_texture_we(t_data *data, t_player *delta, t_tex *tex);
+double		g_player_y(t_data *data);
+double		g_player_x(t_data *data);
+double		g_player_dx(t_data *data);
+double		g_player_dy(t_data *data);
 
 #endif
