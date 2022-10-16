@@ -6,7 +6,7 @@
 /*   By: snagat <snagat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 10:41:56 by snagat            #+#    #+#             */
-/*   Updated: 2022/10/16 10:45:10 by snagat           ###   ########.fr       */
+/*   Updated: 2022/10/16 19:45:41 by snagat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,13 @@ int	key_hook(int key, t_data *data)
 	ft_left_right_key(key, data);
 	if (key == LEFT)
 	{
-		data->player->an += DEGREE * 4;
+		data->player->an -= DEGREE * 4;
 		if (data->player->an < 0)
 			data->player->an += M_PI * 2;
 	}
 	else if (key == RIGHT)
 	{
-		data->player->an -= DEGREE * 4;
+		data->player->an += DEGREE * 4;
 		if (data->player->an > M_PI * 2)
 			data->player->an -= M_PI * 2;
 	}
