@@ -6,7 +6,7 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:53:54 by olabrahm          #+#    #+#             */
-/*   Updated: 2022/10/12 19:46:47 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/16 13:25:35 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,13 @@ static int	ft_is_number(char *str)
 
 static int	ft_rgb(int r, int g, int b)
 {
-	return (r << 16 | g << 8 | b);
+	int	color;
+
+	color = 0;
+	color = color | r << 16;
+	color = color | g << 8;
+	color = color | b;
+	return (color);
 }
 
 static int	ft_extract_rgb(char **splitted_colors)
