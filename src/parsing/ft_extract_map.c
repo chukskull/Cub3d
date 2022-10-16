@@ -6,7 +6,7 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:40:39 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/15 21:17:32 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/16 09:43:45 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,6 @@ static int	has_no_ones(char *line)
 		i++;
 	}
 	return (1);
-}
-
-static int	ft_invalid_char(char c)
-{
-	return (c != '0' && c != '1' && c != ' ' && !ft_char_is_player(c));
 }
 
 static int	ft_invalid_map_line(char **file_content, int line_index)
