@@ -1,3 +1,9 @@
 build/
 *.o
 cub3d
+.vscode/
+*.dSYM
+*.out
+.DS_Store
+libft.a
+.git
