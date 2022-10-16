@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_textures.c                                     :+:      :+:    :+:   */
+/*   ft_invalid_char.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 09:41:24 by olabrahm          #+#    #+#             */
-/*   Updated: 2022/10/16 09:42:55 by olabrahm         ###   ########.fr       */
+/*   Created: 2022/10/16 09:43:50 by olabrahm          #+#    #+#             */
+/*   Updated: 2022/10/16 09:44:03 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-char	*get_north(t_data *data)
+int	ft_invalid_char(char c)
 {
-	return (data->state->north_texture);
-}
-
-char	*get_south(t_data *data)
-{
-	return (data->state->south_texture);
-}
-
-char	*get_east(t_data *data)
-{
-	return (data->state->east_texture);
-}
-
-char	*get_west(t_data *data)
-{
-	return (data->state->west_texture);
+	return (c != '0' && c != '1' && c != ' ' && !ft_char_is_player(c));
 }

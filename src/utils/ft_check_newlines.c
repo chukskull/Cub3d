@@ -6,7 +6,7 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 13:19:54 by olabrahm          #+#    #+#             */
-/*   Updated: 2022/10/13 15:01:09 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/16 09:43:05 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ static int	ft_line_is_texture_color(char *line)
 	return (0);
 }
 
-static void	ft_skip_textures_colors(char *file_content, int *i, int *right_lines)
+static void	ft_skip_textures_colors(char *file_content, int *i,
+		int *right_lines)
 {
 	char	*line;
 
@@ -86,14 +87,10 @@ void	ft_check_newlines(char *file_content)
 
 	i = 0;
 	right_lines = 0;
-	// skip through textures and colors
 	ft_skip_textures_colors(file_content, &i, &right_lines);
-	// skip through new lines
 	while (file_content[i] && file_content[i] == '\n')
 		i++;
-	// go through map till you reach \n or eof
 	ft_skip_map(file_content, &i);
-	// check if there is more content
 	while (file_content[i] && file_content[i] == '\n')
 		i++;
 	if (file_content[i])

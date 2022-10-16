@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_textures.c                                     :+:      :+:    :+:   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 09:41:24 by olabrahm          #+#    #+#             */
-/*   Updated: 2022/10/16 09:42:55 by olabrahm         ###   ########.fr       */
+/*   Created: 2022/10/15 21:09:47 by olabrahm          #+#    #+#             */
+/*   Updated: 2022/10/15 21:11:27 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-char	*get_north(t_data *data)
+int	ft_exit(void)
 {
-	return (data->state->north_texture);
-}
-
-char	*get_south(t_data *data)
-{
-	return (data->state->south_texture);
-}
-
-char	*get_east(t_data *data)
-{
-	return (data->state->east_texture);
-}
-
-char	*get_west(t_data *data)
-{
-	return (data->state->west_texture);
+	exit(0);
+	return (0);
 }

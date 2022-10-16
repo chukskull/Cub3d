@@ -78,7 +78,7 @@ t_player	find_wall_vert(int **map, t_data *data, double ray_an)
 	{
 		if (cos(ray_an) > 0)
 			ver.dx = -(data->player->x - ((int)data->player->x + count++));
-		else if (cos(ray_an) < 0)
+		else
 			ver.dx = -(data->player->x - ((int)data->player->x - count2++));
 		ver.dy = -(ver.dx * (tan(ray_an)));
 		ver.dx += data->player->x;

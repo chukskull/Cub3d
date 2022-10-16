@@ -6,34 +6,11 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 22:15:38 by olabrahm          #+#    #+#             */
-/*   Updated: 2022/10/12 17:43:47 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/15 21:12:57 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	ft_print_map(t_state *state)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < state->map_height)
-	{
-		printf("{");
-		j = 0;
-		while (j < state->map_width)
-		{
-			if (j == state->map_width - 1)
-				printf("'%d' ", state->map[i][j]);
-			else
-				printf(" '%d', ", state->map[i][j]);
-			j++;
-		}
-		printf("}\n");
-		i++;
-	}
-}
 
 int	ft_found_player(char *line)
 {

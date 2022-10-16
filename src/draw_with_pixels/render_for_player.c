@@ -19,7 +19,6 @@ static void	ft_up_down_key(int key, t_data *data)
 	cast_x += cos(data->player->an) * 0.1 * sign;
 	if ((data->state->map[(int)(cast_y)][(int)(cast_x)] == 0) || (data->state->map[(int)(cast_y)][(int)(cast_x)] == 2))
 	{
-		puts("true");
 		data->player->y = cast_y;
 		data->player->x = cast_x;
 	}
@@ -55,14 +54,13 @@ int	key_hook(int key, t_data *data)
 	int	usls;
 
 	usls = 0;
+	if (key == 53)
+		ft_exit();
 	if (key != A && key != S && key != D && key != W && key != 124 && key != 123)
 		return (0);
 	mlx_clear_window(data->mlx, data->win);
-	puts("1");
 	ft_up_down_key(key, data);
-	puts("2");
 	ft_left_right_key(key, data);
-	puts("3");
  	if (key == LEFT)
 	{
 		data->player->an += DEGREE * 4;
@@ -75,7 +73,7 @@ int	key_hook(int key, t_data *data)
 		if (data->player->an > M_PI * 2)
 			data->player->an -= M_PI *2;
 	}
-	draw_map_p(data, 0);
+	draw_map_p(data, 0, -1, -1);
 	return(0);
 }
 

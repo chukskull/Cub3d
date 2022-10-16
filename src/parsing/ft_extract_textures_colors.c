@@ -6,7 +6,7 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:00:32 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/13 15:01:17 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/16 09:45:42 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,7 @@ int	ft_extract_textures_colors(char **lines, int lines_count, t_state *state)
 		else if (!ft_strcmp(first_word, "F") || !ft_strcmp(first_word, "C"))
 			ft_extract_color(lines[i], first_word, state);
 		else
-		{
-			ft_check_infos(state);
-			free(first_word);
-			return (i);
-		}
+			return (ft_check_infos(state), free(first_word), i);
 		free(first_word);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:09:34 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/13 13:21:34 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/16 09:44:19 by olabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,7 @@ int		ft_array_len(char **array);
 void	ft_free_array(char **array);
 int		ft_get_color(char *line);
 void	ft_check_newlines(char *file_content);
+int		ft_exit(void);
+int		ft_invalid_char(char c);
 
 #endif
