@@ -6,7 +6,7 @@
 /*   By: snagat <snagat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 10:41:56 by snagat            #+#    #+#             */
-/*   Updated: 2022/10/16 19:45:41 by snagat           ###   ########.fr       */
+/*   Updated: 2022/10/22 14:43:06 by snagat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ static void	ft_left_right_key(int key, t_data *data)
 		sign = -1;
 	else if (key == D)
 		sign = 1;
-	cast_y -= sin(M_PI - (M_PI_2) - data->player->an) * 0.1 * sign;
-	cast_x -= cos(M_PI - (M_PI_2) - data->player->an) * 0.1 * sign;
+	cast_y += sin(M_PI - (M_PI_2) - data->player->an) * 0.1 * sign;
+	cast_x += cos(M_PI - (M_PI_2) - data->player->an) * 0.1 * sign;
 	if ((data->state->map[(int)(cast_y)][(int)(cast_x)] == 0)
 			|| ((data->state->map[(int)(cast_y)][(int)(cast_x)] == 2)))
 	{
