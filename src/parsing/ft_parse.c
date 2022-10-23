@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: snagat <snagat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:01:14 by dar_sefriou       #+#    #+#             */
-/*   Updated: 2022/10/12 18:57:53 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/10/23 16:53:57 by snagat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_state	*ft_parse(int ac, char **av)
 	t_state	*state;
 	char	*file_content;
 
-	if (ac < 2 || !ft_check_extension(av[1], ".cub"))
+	if (ac != 2 || !ft_check_extension(av[1], ".cub"))
 		return (NULL);
 	file_content = ft_parse_file(av[1]);
 	if (!file_content)
