@@ -84,9 +84,6 @@ int	main(int ac, char **av)
 	t_data	*data;
 	t_state	*state;
 
-	state = ft_parse(ac, av);
-	if (!state)
-		ft_exit_error("Error", 1);
 	data = malloc(sizeof(t_data));
 	if (!data)
 		return (1);

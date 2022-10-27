@@ -18,8 +18,7 @@
 # include <stdio.h>
 # include <math.h>
 # include <fcntl.h>
-# include "libft.h"
-# include "parse.h"
+# include "parsing.h"
 
 # define BUFFER_SIZE 100
 # define HEIGHT 700
@@ -108,7 +107,6 @@ typedef struct s_data
 	t_wall			*wall;
 	t_player		*player;	
 	t_texture		*texture;
-	t_state			*state;
 }	t_data;
 
 typedef struct s_ray
