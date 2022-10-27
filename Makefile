@@ -2,9 +2,11 @@ CC= cc
 
 FLAGS= -Wall -Wextra -Werror
 
-FILES=  cub3d parsing check_wall check_map parsing_utils \
-		get_data check_map2 ft_atoi ft_itoa ft_error ft_split \
-		ft_strncmp ft_strcmp ft_strdup ft_strlen ft_strndup gnl
+FILES=  cub3d parsing/ft_error parsing/gnl parsing/check_extension \
+		parsing/get_map parsing/check_utils parsing/ft_strdup parsing/ft_strlen \
+		parsing/ft_strjoin parsing/ft_atoi parsing/map_utils2 parsing/parsing_utils \
+		parsing/get_texts_colors parsing/colors_utils parsing/get_textures parsing/check_map \
+		parsing/map_utils parsing/ft_split parsing/ft_strcmp parsing/ft_substr parsing/parsing
 
 B_DIR=build
 

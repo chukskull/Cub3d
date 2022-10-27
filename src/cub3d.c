@@ -1,12 +1,15 @@
-#include "cub3d.h"
+#include "parsing.h"
 
-int	main(int ac, char **av)
+int	main(int argc, char **argv)
 {
-	t_data	data_p;
+	t_map	*map;
 
-	if (ac != 2)
-		ft_error("Example: ./cub3d map.cub\n");
-	data_p.map.file_name = ft_strdup(av[1]);
-	parsing(&data_p);
+	if (argc != 2)
+		ft_error("Invalid Args! Ex: ./cub3d map.cub\n");
+	map = parsing(argv);
+	if (!map)
+		ft_error("Parsing Error!\n");
+	printf("%d\n", map->map_w);
+	printf("%d\n", map->map_h);
 	return (0);
 }
