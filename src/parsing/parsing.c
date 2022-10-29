@@ -28,7 +28,7 @@ t_map	*parsing(char *argv)
 
 	if (check_extension(&argv[1], ".cub") == 1)
 		ft_error("Wrong file extension, use .cub\n");
-	map_content = get_map_data(&argv[1]);
+	map_content = get_map_data(&argv[0]);
 	if (!map_content)
 		ft_error("Invalid or Empty File\n");
 	map = (t_map *)malloc(sizeof(t_map));
