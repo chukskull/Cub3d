@@ -64,8 +64,8 @@ t_player	find_wall_horiz(int **map, t_data *data, double ray_an)
 		dx = horiz.dx;
 		horiz.dy += data->player->y;
 		dy = horiz.dy;
-		if (dx >= data->state->map_width || dx <= 0
-			|| dy >= data->state->map_height || dy <= 0)
+		if (dx >= data->map->map_w || dx <= 0
+			|| dy >= data->map->map_h || dy <= 0)
 			break ;
 		if ((map[dy - 1][dx] == 1 || map[dy][dx] == 1))
 			break ;
@@ -104,7 +104,7 @@ t_player	find_wall_vert(int **map, t_data *data, double ray_an)
 		c.v.dy = -(c.v.dx * (tan(ray_an)));
 		c.v.dx += data->player->x;
 		c.v.dy += data->player->y;
-		if ((c.v.dy < 0 || c.v.dy > data->state->map_height))
+		if ((c.v.dy < 0 || c.v.dy > data->map->map_h))
 		{
 			c.v.flag = 1;
 			break ;

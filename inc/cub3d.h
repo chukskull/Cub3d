@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 12:36:21 by olabrahm          #+#    #+#             */
-/*   Updated: 2022/10/16 13:14:37 by olabrahm         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -105,7 +93,8 @@ typedef struct s_data
 	void			*img;
 	void			*win;
 	t_wall			*wall;
-	t_player		*player;	
+	t_player		*player;
+	t_map			*map;
 	t_texture		*texture;
 }	t_data;
 
