@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_utils.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: azouaghi <azouaghi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/01 13:13:10 by azouaghi          #+#    #+#             */
+/*   Updated: 2022/11/01 13:16:21 by azouaghi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parsing.h"
 
 int	ft_strchr_gnl(const char *s, int c)
@@ -44,7 +56,6 @@ void	init_map(t_map *map)
 	map->south_texture = NULL;
 	map->west_texture = NULL;
 	map->east_texture = NULL;
-	
 }
 
 int	count_lines(char **lines)

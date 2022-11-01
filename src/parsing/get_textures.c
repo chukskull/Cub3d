@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_textures.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: azouaghi <azouaghi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/01 13:12:50 by azouaghi          #+#    #+#             */
+/*   Updated: 2022/11/01 13:12:51 by azouaghi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parsing.h"
 
 static void	north_texture(char *line, t_map *map)
@@ -5,7 +17,6 @@ static void	north_texture(char *line, t_map *map)
 	if (map->north_texture)
 		ft_error("NO texture Error!\n");
 	map->north_texture = ft_get_second_word(line);
-	printf("%s\n", map->north_texture);
 	if (!map->north_texture)
 		ft_error("NO texture Error!\n");
 }

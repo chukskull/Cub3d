@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: azouaghi <azouaghi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 12:15:35 by olabrahm          #+#    #+#             */
-/*   Updated: 2022/10/16 12:42:33 by olabrahm         ###   ########.fr       */
+/*   Created: 2022/11/01 13:45:14 by azouaghi          #+#    #+#             */
+/*   Updated: 2022/11/01 13:45:16 by azouaghi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ char			*get_north(t_data *data);
 char			*get_south(t_data *data);
 char			*get_east(t_data *data);
 char			*get_west(t_data *data);
+int				func(int key, t_data *data);
+int				func2(int key, t_data *data);
 
 #endif

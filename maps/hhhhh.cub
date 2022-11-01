@@ -1,10 +1,10 @@
-NO images/zlijcasa.xpm
-SO images/zlijfassi.xpm
-WE images/zlpop.xpm
-EA images/kozina_1_.xpm
+NO images/brick-wall-19.xpm
+SO images/brick-wall-19.xpm
+WE images/brick-wall-19.xpm
+EA images/wall.xpm
 
-C      0,0,0
-F      0,0,255
+C      135,206,235
+F      139,69,19
 
 1111111111111111
 100000100000001

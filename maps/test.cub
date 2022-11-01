@@ -1,10 +1,10 @@
-NO textures/texture0.xpm
-SO textures/texture1.xpm
-WE textures/texture2.xpm
+NO images/wall.xpm
+SO images/brick-wall-19.xpm
+WE images/brick-wall-19.xpm
+EA images/wall.xpm
 
 C 225,30,0
 F 220,100,0
-EA textures/texture3.xpm
 
 
 1111111111

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: azouaghi <azouaghi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/01 13:12:59 by azouaghi          #+#    #+#             */
+/*   Updated: 2022/11/01 13:16:11 by azouaghi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parsing.h"
 
 int	ft_isdigit(int c)
@@ -36,7 +48,6 @@ char	*ft_get_second_word(char *str)
 	ft_free_array(words);
 	return (second_word);
 }
-
 
 char	*ft_get_first_word(char *str)
 {

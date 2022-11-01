@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: azouaghi <azouaghi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/01 13:12:26 by azouaghi          #+#    #+#             */
+/*   Updated: 2022/11/01 13:15:05 by azouaghi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parsing.h"
 
 static void	ft_bzero(void *ptr, size_t n)
@@ -24,7 +36,6 @@ static void	*ft_calloc(size_t n, size_t size)
 	ft_bzero(ptr, n * size);
 	return (ptr);
 }
-
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: azouaghi <azouaghi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/01 13:13:16 by azouaghi          #+#    #+#             */
+/*   Updated: 2022/11/01 13:15:59 by azouaghi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parsing.h"
 
 char	*get_map_data(char *file)
@@ -5,6 +17,7 @@ char	*get_map_data(char *file)
 	int		fd;
 	char	*map_content;
 	char	*line;
+
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		ft_error("the file couldn't be opened\n");
@@ -15,8 +28,8 @@ char	*get_map_data(char *file)
 		map_content = ft_strjoin(map_content, line);
 		if (!map_content)
 			ft_error("The file is empty!");
-			free(line);
-			line = gnl(fd);
+		free(line);
+		line = gnl(fd);
 	}
 	return (close(fd), map_content);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_for_player.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snagat <snagat@student.42.fr>              +#+  +:+       +#+        */
+/*   By: azouaghi <azouaghi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 10:41:56 by snagat            #+#    #+#             */
-/*   Updated: 2022/11/01 12:23:58 by snagat           ###   ########.fr       */
+/*   Updated: 2022/11/01 13:14:18 by azouaghi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int	key_hook(t_data *data)
 	mlx_clear_window(data->mlx, data->win);
 	ft_up_down_key(data);
 	ft_left_right_key(data);
-	
 	data->player->an += DEGREE * 4 * data->button.tour_left;
 	if (data->player->an < 0)
 		data->player->an += M_PI * 2;
