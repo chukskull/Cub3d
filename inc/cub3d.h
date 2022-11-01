@@ -67,7 +67,16 @@ typedef struct s_wall
 	int		top_y;
 	int		bottom_y;
 }	t_wall;
-
+typedef struct s_rel
+{
+	int	tour_right;
+	int	tour_left;
+	int	left;
+	int	right;
+	int	up;
+	int	down;
+	int	flag;
+}	t_rel;
 typedef struct s_tex
 {
 	int				tab[2];
@@ -96,6 +105,7 @@ typedef struct s_data
 	t_player		*player;
 	t_map			*map;
 	t_texture		*texture;
+	t_rel			button;
 }	t_data;
 
 typedef struct s_ray
@@ -109,7 +119,7 @@ int			grab_pixel(int x, int y, int width, unsigned int *addr);
 void		fill_pixel(t_data *data, int x, int y, int color);
 int			render_for_p(t_data *data);
 void		draw_map_p(t_data *data, int init, int r, int c);
-int			key_hook(int key, t_data *data);
+int			key_hook(t_data *data);
 t_player	find_wall_horiz(int **map, t_data *data, double ray_angle);
 t_player	find_wall_vert(int **map, t_data *data, double ray_angle);
 t_player	find_wall(int **map, t_data *data, double ray_angle);

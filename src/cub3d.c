@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: snagat <snagat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 21:11:40 by snagat            #+#    #+#             */
-/*   Updated: 2022/10/16 12:30:48 by olabrahm         ###   ########.fr       */
+/*   Updated: 2022/11/01 12:25:15 by snagat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,62 @@ void	get_textures_2(t_data *data, int dir)
 	}
 }
 
+
+
+int	func(int key, t_data *data)
+{
+	data->button.flag = 0;
+	if (key == A)
+	{
+		data->button.flag = 1;
+		data->button.left = -1;
+	}
+	else if (key == D)
+	{
+		data->button.flag = 1;
+		data->button.right = 1;
+	}
+	else if (key == S)
+	{
+		data->button.flag = 1;
+		data->button.down = -1;
+	}
+	else if (key == W)
+	{
+		data->button.flag = 1;
+		data->button.up = 1;
+	}
+	else if (key == LEFT)
+	{
+		data->button.flag = 1;
+		data->button.tour_left = -1;
+	}
+	else if (key == RIGHT)
+	{
+		data->button.flag = 1;
+		data->button.tour_right = 1;
+	}
+	return 1;
+}
+	
+	
+
+int	func2(int key, t_data *data)
+{
+	if (key == A)
+		data->button.left = 0;
+	else if (key == D)
+		data->button.right = 0;
+	else if (key == S)
+		data->button.down = 0;
+	else if (key == W)
+		data->button.up = 0;
+	else if (key == LEFT)
+		data->button.tour_left = 0;
+	else if (key == RIGHT)
+		data->button.tour_right = 0;
+	return 1;
+}
 void	get_textures(t_data *data, int dir)
 {
 	if (dir == 1)
@@ -60,6 +116,15 @@ void	get_textures(t_data *data, int dir)
 	get_textures_2(data, dir);
 }
 
+int	key_hook_o(void	*v)
+{
+	t_data *data;
+	data = (t_data *)v;
+	if (data->button.flag == 1)
+		key_hook(data);
+	return 1;
+}
+
 void	initial(t_data *data)
 {
 	int	i;
@@ -75,7 +140,9 @@ void	initial(t_data *data)
 		i++;
 	}
 	draw_map_p(data, 1, -1, -1);
-	mlx_hook(data->win, 02, 1L << 0, key_hook, data);
+	mlx_loop_hook(data->mlx, key_hook_o,(void *)data);
+	mlx_hook(data->win, 2, 0, func ,data);
+	mlx_hook(data->win, 3, 0, func2, data);
 	mlx_hook(data->win, 17, 0, ft_exit, NULL);
 	mlx_loop(data->mlx);
 }
