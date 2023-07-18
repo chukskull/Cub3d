@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   draw_walls.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 11:17:45 by snagat            #+#    #+#             */
-/*   Updated: 2022/10/16 12:33:46 by olabrahm         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "cub3d.h"
 #include "utils.h"
@@ -70,11 +59,11 @@ static void	draw_wall2(t_data *data, t_ray *ray,
 
 	x_w = WIDTH / 60.0;
 	if (ray->y < data->wall->top_y)
-		fill_pixel(data, ray->x * x_w, ray->y, data->state->ceiling_color);
+		fill_pixel(data, ray->x * x_w, ray->y, data->map->ceiling_color);
 	else if (ray->y >= data->wall->top_y && ray->y <= data->wall->bottom_y)
 		ft_apply_texture(data, ray, delta, x_w);
 	else if (ray->y > data->wall->bottom_y && ray->y < HEIGHT)
-		fill_pixel(data, ray->x * x_w, ray->y, data->state->floor_color);
+		fill_pixel(data, ray->x * x_w, ray->y, data->map->floor_color);
 }
 
 void	draw_walls(t_player delta, t_data *data, t_ray *ray)

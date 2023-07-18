@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_textures.c                                     :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snagat <snagat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 13:13:43 by snagat          #+#    #+#             */
-/*   Updated: 2022/11/01 13:13:44 by snagat         ###   ########.fr       */
+/*   Created: 2022/11/01 13:12:15 by snagat          #+#    #+#             */
+/*   Updated: 2022/11/01 13:12:16 by snagat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "parsing.h"
 
-char	*get_north(t_data *data)
+char	*ft_strdup(const char *s)
 {
-	return (data->map->north_texture);
-}
+	char	*dup;
+	int		i;
 
-char	*get_south(t_data *data)
-{
-	return (data->map->south_texture);
-}
-
-char	*get_east(t_data *data)
-{
-	return (data->map->east_texture);
-}
-
-char	*get_west(t_data *data)
-{
-	return (data->map->west_texture);
+	dup = (char *) malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (!dup)
+		return (0);
+	i = -1;
+	while (s[++i])
+		dup[i] = s[i];
+	dup[i] = '\0';
+	return (dup);
 }

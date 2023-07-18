@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_textures.c                                     :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snagat <snagat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 13:13:43 by snagat          #+#    #+#             */
-/*   Updated: 2022/11/01 13:13:44 by snagat         ###   ########.fr       */
+/*   Created: 2022/11/01 13:12:23 by snagat          #+#    #+#             */
+/*   Updated: 2022/11/01 13:12:24 by snagat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "parsing.h"
 
-char	*get_north(t_data *data)
+size_t	ft_strlen(const char *s)
 {
-	return (data->map->north_texture);
-}
+	size_t	i;
 
-char	*get_south(t_data *data)
-{
-	return (data->map->south_texture);
-}
-
-char	*get_east(t_data *data)
-{
-	return (data->map->east_texture);
-}
-
-char	*get_west(t_data *data)
-{
-	return (data->map->west_texture);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }

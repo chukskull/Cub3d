@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_textures.c                                     :+:      :+:    :+:   */
+/*   check_extension.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snagat <snagat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 13:13:43 by snagat          #+#    #+#             */
-/*   Updated: 2022/11/01 13:13:44 by snagat         ###   ########.fr       */
+/*   Created: 2022/11/01 13:10:49 by snagat          #+#    #+#             */
+/*   Updated: 2022/11/01 13:10:50 by snagat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "parsing.h"
 
-char	*get_north(t_data *data)
+int	check_extension(char *src, char *to_find)
 {
-	return (data->map->north_texture);
-}
+	int		i;
+	size_t	j;
 
-char	*get_south(t_data *data)
-{
-	return (data->map->south_texture);
-}
-
-char	*get_east(t_data *data)
-{
-	return (data->map->east_texture);
-}
-
-char	*get_west(t_data *data)
-{
-	return (data->map->west_texture);
+	i = 0;
+	j = ft_strlen(src) - ft_strlen(to_find);
+	while ((src[j] && to_find[i])
+		&& (src[j++] == to_find[i++]))
+		;
+	if (j == ft_strlen(src))
+		return (EXIT_SUCCESS);
+	return (EXIT_FAILURE);
 }

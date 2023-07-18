@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_textures.c                                     :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snagat <snagat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 13:13:43 by snagat          #+#    #+#             */
-/*   Updated: 2022/11/01 13:13:44 by snagat         ###   ########.fr       */
+/*   Created: 2022/11/01 13:12:11 by snagat          #+#    #+#             */
+/*   Updated: 2022/11/01 13:12:12 by snagat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "parsing.h"
 
-char	*get_north(t_data *data)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	return (data->map->north_texture);
-}
+	size_t	i;
 
-char	*get_south(t_data *data)
-{
-	return (data->map->south_texture);
-}
-
-char	*get_east(t_data *data)
-{
-	return (data->map->east_texture);
-}
-
-char	*get_west(t_data *data)
-{
-	return (data->map->west_texture);
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

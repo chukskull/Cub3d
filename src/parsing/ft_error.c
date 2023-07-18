@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_textures.c                                     :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snagat <snagat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 13:13:43 by snagat          #+#    #+#             */
-/*   Updated: 2022/11/01 13:13:44 by snagat         ###   ########.fr       */
+/*   Created: 2022/11/01 13:11:36 by snagat          #+#    #+#             */
+/*   Updated: 2022/11/01 13:11:37 by snagat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "parsing.h"
 
-char	*get_north(t_data *data)
+void	ft_error(char *error)
 {
-	return (data->map->north_texture);
-}
-
-char	*get_south(t_data *data)
-{
-	return (data->map->south_texture);
-}
-
-char	*get_east(t_data *data)
-{
-	return (data->map->east_texture);
-}
-
-char	*get_west(t_data *data)
-{
-	return (data->map->west_texture);
+	write(2, "Error:\n", 7);
+	write(2, error, ft_strlen(error));
+	exit(1);
 }

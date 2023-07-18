@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   draw_evertn.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: snagat <snagat@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 10:00:16 by snagat            #+#    #+#             */
-/*   Updated: 2022/10/16 19:44:35 by snagat           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "cub3d.h"
 
@@ -26,8 +15,6 @@ data->img, &data->usls, &data->usls, &data->usls);
 	while (ray.x > 0)
 	{
 		ray.an = an_beg - (ray.x * DEGREE);
-		if (ray.an > 2 * M_PI)
-			ray.an -= 2 * M_PI;
 		delta = find_wall(map, data, ray.an);
 		draw_walls(delta, data, &ray);
 		ray.x -= 59.0 / WIDTH;

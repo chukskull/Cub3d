@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: olabrahm <olabrahm@student.1337.ma>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 12:36:21 by olabrahm          #+#    #+#             */
-/*   Updated: 2022/10/16 13:14:37 by olabrahm         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
@@ -18,8 +7,7 @@
 # include <stdio.h>
 # include <math.h>
 # include <fcntl.h>
-# include "libft.h"
-# include "parse.h"
+# include "parsing.h"
 
 # define BUFFER_SIZE 100
 # define HEIGHT 700
@@ -80,7 +68,16 @@ typedef struct s_wall
 	int		top_y;
 	int		bottom_y;
 }	t_wall;
-
+typedef struct s_rel
+{
+	int	tour_right;
+	int	tour_left;
+	int	left;
+	int	right;
+	int	up;
+	int	down;
+	int	flag;
+}	t_rel;
 typedef struct s_tex
 {
 	int				tab[2];
@@ -106,9 +103,10 @@ typedef struct s_data
 	void			*img;
 	void			*win;
 	t_wall			*wall;
-	t_player		*player;	
+	t_player		*player;
+	t_map			*map;
 	t_texture		*texture;
-	t_state			*state;
+	t_rel			button;
 }	t_data;
 
 typedef struct s_ray
@@ -122,7 +120,7 @@ int			grab_pixel(int x, int y, int width, unsigned int *addr);
 void		fill_pixel(t_data *data, int x, int y, int color);
 int			render_for_p(t_data *data);
 void		draw_map_p(t_data *data, int init, int r, int c);
-int			key_hook(int key, t_data *data);
+int			key_hook(t_data *data);
 t_player	find_wall_horiz(int **map, t_data *data, double ray_angle);
 t_player	find_wall_vert(int **map, t_data *data, double ray_angle);
 t_player	find_wall(int **map, t_data *data, double ray_angle);
